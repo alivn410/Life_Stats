@@ -399,255 +399,178 @@
     <!-- CATEGORIES + SECTIONS -->
     <section class="categories">
 
-      <!-- HUMAN-NESS / MIND CATEGORY -->
-<details class="category">
-  <summary>
-    <div class="cat-left">
-      <span class="cat-name">Human-ness / Mind</span>
-      <span class="cat-desc">Mindfulness, gratitude, purpose, discipline, integrity, curiosity.</span>
-    </div>
-    <span class="cat-score">Score: <span id="mindScoreHeader">—</span></span>
-  </summary>
+     <tbody>
 
-  <div class="sections">
-    <details class="section" open>
-      <summary>
-        <span class="sec-name">Human-ness</span>
-        <span class="sec-score">How “awake”, grounded and aligned you are as a human.</span>
-      </summary>
-      <div class="section-body">
-        <div>
-          <div class="label">Explanation</div>
-          <div class="value">
-            Tracks how present you are, how grateful, how clear your purpose is, how disciplined,
-            how aligned you are with your values, and how curious you are about life.
-          </div>
-        </div>
+  <!-- 1 Mindfulness -->
+  <tr class="mind-row">
+    <td>Mindfulness – awareness of the present</td>
+    <td class="level-cell level-beginner" contenteditable="true">
+      Most of the day on autopilot. Easily distracted by phone or thoughts.
+      Notices emotions only after reacting.
+    </td>
+    <td class="level-cell level-intermediate" contenteditable="true">
+      Has short mindful moments during the day (2–5 min).
+      Occasionally returns to breath/body awareness.
+    </td>
+    <td class="level-cell level-expert" contenteditable="true">
+      Daily mindfulness practice (10–20 min).
+      High awareness of thoughts, emotions, and body in real time.
+    </td>
+    <td contenteditable="true">Use micro-pauses: 3 deep breaths before eating, scrolling or replying.</td>
+    <td contenteditable="true">Calm, grounded, fully present most of the day.</td>
+    <td>
+      <select class="level-select">
+        <option value="0">Not set</option>
+        <option value="1">Beginner</option>
+        <option value="2">Intermediate</option>
+        <option value="3">Expert</option>
+      </select>
+    </td>
+    <td class="aspect-score-cell">—</td>
+  </tr>
 
-        <div style="margin-top:4px; margin-bottom:4px;">
-          <div class="label">Human-ness / Mind score</div>
-          <div class="value">
-            <strong><span id="mindScoreInline">—</span></strong>
-            (average of all Human-ness aspects with a chosen level)
-          </div>
-        </div>
+  <!-- 2 Gratitude -->
+  <tr class="mind-row">
+    <td>Gratitude – appreciation for what you have (Mother)</td>
+    <td class="level-cell level-beginner" contenteditable="true">
+      Focuses more on what is missing or wrong in life.
+      Says "alhamdulillah" but without feeling it deeply.
+    </td>
+    <td class="level-cell level-intermediate" contenteditable="true">
+      Regularly notices blessings (big or small).
+      Sometimes lists 2–3 things to be grateful for.
+    </td>
+    <td class="level-cell level-expert" contenteditable="true">
+      Strong daily gratitude, even when life isn’t perfect.
+      Expresses appreciation to people consistently (like your mother).
+    </td>
+    <td contenteditable="true">End each day with 3 blessings you felt today.</td>
+    <td contenteditable="true">Deep, automatic gratitude mindset.</td>
+    <td>
+      <select class="level-select">
+        <option value="0">Not set</option>
+        <option value="1">Beginner</option>
+        <option value="2">Intermediate</option>
+        <option value="3">Expert</option>
+      </select>
+    </td>
+    <td class="aspect-score-cell">—</td>
+  </tr>
 
-        <div>
-          <div class="label">Human-ness aspects & levels</div>
-          <table class="levels">
-            <thead>
-              <tr>
-                <th>Aspect</th>
-                <th>Beginner</th>
-                <th>Intermediate</th>
-                <th>Expert</th>
-                <th>Tips</th>
-                <th>Final goal</th>
-                <th>My level</th>
-                <th>Aspect score</th>
-              </tr>
-            </thead>
-            <tbody>
+  <!-- 3 Purpose -->
+  <tr class="mind-row">
+    <td>Purpose – clarity of direction in life</td>
+    <td class="level-cell level-beginner" contenteditable="true">
+      No clear idea of next years. Goals change every week.  
+      Moves mainly based on mood.
+    </td>
+    <td class="level-cell level-intermediate" contenteditable="true">
+      Has a 1–3 year direction.  
+      Can explain "what I'm trying to build right now."
+    </td>
+    <td class="level-cell level-expert" contenteditable="true">
+      Clear 5–10 year vision.  
+      Daily/weekly actions line up with long-term goals.
+    </td>
+    <td contenteditable="true">Write a 1–2 sentence life mission.</td>
+    <td contenteditable="true">Every action aligns with a clear long-term vision.</td>
+    <td>
+      <select class="level-select">
+        <option value="0">Not set</option>
+        <option value="1">Beginner</option>
+        <option value="2">Intermediate</option>
+        <option value="3">Expert</option>
+      </select>
+    </td>
+    <td class="aspect-score-cell">—</td>
+  </tr>
 
-              <!-- 1 Mindfulness -->
-              <tr class="mind-row">
-                <td>Mindfulness – awareness of the present</td>
-                <td class="level-cell level-beginner" contenteditable="true">
-                  Most of the day on autopilot. Constantly distracted by phone / thoughts.
-                  Notices emotions only after reacting.
-                </td>
-                <td class="level-cell level-intermediate" contenteditable="true">
-                  Sometimes remembers to come back to breath / body. Has short mindful moments
-                  during the day (2–5 min, a few times per week).
-                </td>
-                <td class="level-cell level-expert" contenteditable="true">
-                  Daily mindfulness practice (10–20 min). Often aware of thoughts and body in real time.
-                  Very present in conversations and daily life.
-                </td>
-                <td contenteditable="true">
-                  Use micro-pauses: 3 deep breaths before scrolling, eating, or replying.
-                </td>
-                <td contenteditable="true">
-                  Calm, present, not controlled by autopilot or phone.
-                </td>
-                <td>
-                  <select class="level-select">
-                    <option value="0">Not set</option>
-                    <option value="1">Beginner</option>
-                    <option value="2">Intermediate</option>
-                    <option value="3">Expert</option>
-                  </select>
-                </td>
-                <td class="aspect-score-cell">—</td>
-              </tr>
+  <!-- 4 Discipline -->
+  <tr class="mind-row">
+    <td>Discipline – consistency with goals (Kofi hungry mode)</td>
+    <td class="level-cell level-beginner" contenteditable="true">
+      Only acts when motivated.  
+      Starts many things, rarely finishes.
+    </td>
+    <td class="level-cell level-intermediate" contenteditable="true">
+      Follows routines most weeks.  
+      Sometimes pushes through even when tired.
+    </td>
+    <td class="level-cell level-expert" contenteditable="true">
+      Shows up regardless of mood (Kofi when hungry).  
+      Rarely breaks promises to self.
+    </td>
+    <td contenteditable="true">Minimum daily actions: 5 min study, 1 exercise set, etc.</td>
+    <td contenteditable="true">Does what needs to be done without thinking.</td>
+    <td>
+      <select class="level-select">
+        <option value="0">Not set</option>
+        <option value="1">Beginner</option>
+        <option value="2">Intermediate</option>
+        <option value="3">Expert</option>
+      </select>
+    </td>
+    <td class="aspect-score-cell">—</td>
+  </tr>
 
-              <!-- 2 Gratitude -->
-              <tr class="mind-row">
-                <td>Gratitude – appreciation for what you have (Mother)</td>
-                <td class="level-cell level-beginner" contenteditable="true">
-                  Focus mostly on what is missing or wrong. Says “alhamdulillah” but doesn’t really feel it.
-                  Rarely thanks people directly.
-                </td>
-                <td class="level-cell level-intermediate" contenteditable="true">
-                  Regularly notices good things in life (even small ones). Sometimes lists
-                  2–3 things to be grateful for. Says thank you more often.
-                </td>
-                <td class="level-cell level-expert" contenteditable="true">
-                  Strong daily feeling of gratitude, even when life is not perfect.
-                  Often expresses appreciation to people (like your Mother).
-                </td>
-                <td contenteditable="true">
-                  Once a day, write or think of 3 blessings and 1 person to thank.
-                </td>
-                <td contenteditable="true">
-                  Deep, automatic gratitude mindset similar to your mother’s warmth.
-                </td>
-                <td>
-                  <select class="level-select">
-                    <option value="0">Not set</option>
-                    <option value="1">Beginner</option>
-                    <option value="2">Intermediate</option>
-                    <option value="3">Expert</option>
-                  </select>
-                </td>
-                <td class="aspect-score-cell">—</td>
-              </tr>
+  <!-- 5 Integrity -->
+  <tr class="mind-row">
+    <td>Integrity – acting by your values</td>
+    <td class="level-cell level-beginner" contenteditable="true">
+      Does what is easy instead of what is right.  
+      Behaves differently depending on who is watching.
+    </td>
+    <td class="level-cell level-intermediate" contenteditable="true">
+      Tries to align actions with values.  
+      Feels bad when acting against morals.
+    </td>
+    <td class="level-cell level-expert" contenteditable="true">
+      Same person in private and public.  
+      Strong internal moral code.  
+      Can say “no” even when it costs comfort.
+    </td>
+    <td contenteditable="true">Before acting ask: “Is this aligned with who I want to be?”</td>
+    <td contenteditable="true">A consistent and principled character.</td>
+    <td>
+      <select class="level-select">
+        <option value="0">Not set</option>
+        <option value="1">Beginner</option>
+        <option value="2">Intermediate</option>
+        <option value="3">Expert</option>
+      </select>
+    </td>
+    <td class="aspect-score-cell">—</td>
+  </tr>
 
-              <!-- 3 Purpose -->
-              <tr class="mind-row">
-                <td>Purpose – clarity of direction in life</td>
-                <td class="level-cell level-beginner" contenteditable="true">
-                  No clear idea what the next years should look like. Goals change every week.
-                  Moves mainly by mood.
-                </td>
-                <td class="level-cell level-intermediate" contenteditable="true">
-                  Has a rough 1–3 year direction (career, money, self). A few written goals.
-                  Can explain “what I’m trying to build now”.
-                </td>
-                <td class="level-cell level-expert" contenteditable="true">
-                  Clear long-term vision (5–10+ years). Short-term actions link to that vision.
-                  Uses purpose to decide what to say yes/no to.
-                </td>
-                <td contenteditable="true">
-                  Write a 1–2 sentence life mission, then check new goals against it.
-                </td>
-                <td contenteditable="true">
-                  A clear main character story: you know your role and where you’re going.
-                </td>
-                <td>
-                  <select class="level-select">
-                    <option value="0">Not set</option>
-                    <option value="1">Beginner</option>
-                    <option value="2">Intermediate</option>
-                    <option value="3">Expert</option>
-                  </select>
-                </td>
-                <td class="aspect-score-cell">—</td>
-              </tr>
+  <!-- 6 Curiosity -->
+  <tr class="mind-row">
+    <td>Curiosity – openness to new experiences (Faris)</td>
+    <td class="level-cell level-beginner" contenteditable="true">
+      Stays in comfort zone.  
+      Rarely tries new ideas or experiences.
+    </td>
+    <td class="level-cell level-intermediate" contenteditable="true">
+      Sometimes explores new topics, places, or activities.
+    </td>
+    <td class="level-cell level-expert" contenteditable="true">
+      Actively seeks new experiences (Faris energy).  
+      Learns, tries, builds, explores constantly.
+    </td>
+    <td contenteditable="true">Once a week do one “new” thing.</td>
+    <td contenteditable="true">Life becomes exploration and learning.</td>
+    <td>
+      <select class="level-select">
+        <option value="0">Not set</option>
+        <option value="1">Beginner</option>
+        <option value="2">Intermediate</option>
+        <option value="3">Expert</option>
+      </select>
+    </td>
+    <td class="aspect-score-cell">—</td>
+  </tr>
 
-              <!-- 4 Discipline -->
-              <tr class="mind-row">
-                <td>Discipline – consistency with goals (Kofi hungry mode)</td>
-                <td class="level-cell level-beginner" contenteditable="true">
-                  Only acts when motivated. Starts many things, rarely finishes.
-                  Easily derailed by mood, tiredness, or distractions.
-                </td>
-                <td class="level-cell level-intermediate" contenteditable="true">
-                  Follows simple routines (gym, savings, study) most weeks.
-                  Sometimes pushes through even when not in the mood.
-                </td>
-                <td class="level-cell level-expert" contenteditable="true">
-                  Shows up regardless of mood (Kofi when hungry).
-                  Has strong routines for body, mind, money and deen. Rarely breaks serious promises to self.
-                </td>
-                <td contenteditable="true">
-                  Start tiny: minimum daily actions (e.g. 5 min study, 1 exercise set) even on bad days.
-                </td>
-                <td contenteditable="true">
-                  Relies on discipline, not motivation. Automatically does what needs to be done.
-                </td>
-                <td>
-                  <select class="level-select">
-                    <option value="0">Not set</option>
-                    <option value="1">Beginner</option>
-                    <option value="2">Intermediate</option>
-                    <option value="3">Expert</option>
-                  </select>
-                </td>
-                <td class="aspect-score-cell">—</td>
-              </tr>
+</tbody>
 
-              <!-- 5 Integrity -->
-              <tr class="mind-row">
-                <td>Integrity – acting by your values</td>
-                <td class="level-cell level-beginner" contenteditable="true">
-                  Knows what is right but often does the opposite, especially in private.
-                  Changes behaviour a lot depending on who is around.
-                </td>
-                <td class="level-cell level-intermediate" contenteditable="true">
-                  Tries to match actions with values most of the time.
-                  Feels bad when acting against morals and sometimes corrects it.
-                </td>
-                <td class="level-cell level-expert" contenteditable="true">
-                  Same person in public and private. Strong internal code (deen + values).
-                  Can say no even when it costs comfort, money or status.
-                </td>
-                <td contenteditable="true">
-                  Before big choices, ask: “Is this aligned with who I want to be long term?”
-                </td>
-                <td contenteditable="true">
-                  A version of you you’d be proud to meet on the Day of Judgement.
-                </td>
-                <td>
-                  <select class="level-select">
-                    <option value="0">Not set</option>
-                    <option value="1">Beginner</option>
-                    <option value="2">Intermediate</option>
-                    <option value="3">Expert</option>
-                  </select>
-                </td>
-                <td class="aspect-score-cell">—</td>
-              </tr>
-
-              <!-- 6 Curiosity -->
-              <tr class="mind-row">
-                <td>Curiosity – openness to new experiences (Faris)</td>
-                <td class="level-cell level-beginner" contenteditable="true">
-                  Stays mostly in comfort zone. Rarely asks “why/how”. Avoids new ideas,
-                  places, or experiences.
-                </td>
-                <td class="level-cell level-intermediate" contenteditable="true">
-                  Sometimes tries new activities, places, or topics.
-                  Asks questions when something is interesting. Learns a bit beyond basics.
-                </td>
-                <td class="level-cell level-expert" contenteditable="true">
-                  Actively seeks new experiences and knowledge (Faris energy).
-                  Turns boredom into exploration (learning, building, experimenting).
-                </td>
-                <td contenteditable="true">
-                  Once a week, do one “new thing” (new place, new food, new topic, new skill).
-                </td>
-                <td contenteditable="true">
-                  Confident beginner in many areas, always exploring and learning.
-                </td>
-                <td>
-                  <select class="level-select">
-                    <option value="0">Not set</option>
-                    <option value="1">Beginner</option>
-                    <option value="2">Intermediate</option>
-                    <option value="3">Expert</option>
-                  </select>
-                </td>
-                <td class="aspect-score-cell">—</td>
-              </tr>
-
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </details>
-  </div>
-</details>
 
 
       <!-- PHYSICAL ACTIVITY -->
