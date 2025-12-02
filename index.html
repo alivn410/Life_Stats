@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Life Stats – Physical Activity, Sexual Health & Finance</title>
+  <title>Life Stats Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
@@ -219,13 +219,13 @@
       padding: 4px 6px;
     }
     .level-beginner {
-      background: rgba(239, 68, 68, 0.12);   /* red-ish */
+      background: rgba(239, 68, 68, 0.12);
     }
     .level-intermediate {
-      background: rgba(249, 115, 22, 0.12);  /* orange-ish */
+      background: rgba(249, 115, 22, 0.12);
     }
     .level-expert {
-      background: rgba(59, 130, 246, 0.12);  /* blue-ish */
+      background: rgba(59, 130, 246, 0.12);
     }
 
     .aspect-score-cell {
@@ -312,10 +312,10 @@
   <div class="app">
     <header>
       <h1>Life Stats</h1>
-      <small>FIFA-style overall card + detailed Physical, Sexual and Finance stats.</small>
+      <small>Game-style tracker for your life (Numbers → Web).</small>
     </header>
 
-    <!-- TOP SUMMARY: FIFA card + side card -->
+    <!-- TOP: FIFA CARD + OVERVIEW -->
     <div class="grid">
       <div class="card" style="background:none;border:none;box-shadow:none;padding:0;display:flex;justify-content:center;align-items:center;">
         <div class="fifa-card">
@@ -344,16 +344,8 @@
               <span class="fifa-stat-label">FIN</span>
             </div>
             <div>
-              <span class="fifa-stat-value">--</span>
-              <span class="fifa-stat-label">SOC</span>
-            </div>
-            <div>
-              <span class="fifa-stat-value">--</span>
+              <span class="fifa-stat-value" id="statMind">--</span>
               <span class="fifa-stat-label">MND</span>
-            </div>
-            <div>
-              <span class="fifa-stat-value">--</span>
-              <span class="fifa-stat-label">HLTH</span>
             </div>
           </div>
           <div class="fifa-tag">GAME STATS DASHBOARD</div>
@@ -362,7 +354,7 @@
 
       <div class="card">
         <h2>Quick Overview</h2>
-        <p>Scores now use <strong>Strength</strong>, <strong>Flexibility</strong>, <strong>Sexual Health</strong> and <strong>Finance</strong> to build your FIFA-style rating.</p>
+        <p>Set levels for each aspect. Scores auto-update, and your FIFA card changes.</p>
         <div class="summary-list">
           <div class="summary-item">
             <span>Physical Activity</span>
@@ -385,38 +377,29 @@
             <span class="summary-score"><span id="financeScoreSummary">—</span></span>
           </div>
           <div class="summary-item">
-            <span>Social (placeholder)</span>
-            <span class="summary-score">—</span>
-          </div>
-          <div class="summary-item">
-            <span>Allergies / Health (placeholder)</span>
-            <span class="summary-score">—</span>
+            <span>Human-ness / Mind</span>
+            <span class="summary-score"><span id="mindScoreSummary">—</span></span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- CATEGORIES + SECTIONS -->
+    <!-- MAIN CATEGORIES -->
     <section class="categories">
-
-     <tbody>
-
-
-
 
       <!-- PHYSICAL ACTIVITY -->
       <details class="category" open>
         <summary>
           <div class="cat-left">
             <span class="cat-name">Physical Activity</span>
-            <span class="cat-desc">Strength, flexibility, stamina, balance, recovery, defence, sexual health.</span>
+            <span class="cat-desc">Strength, flexibility, stamina, balance, defence, sexual health.</span>
           </div>
           <span class="cat-score">Score: <span id="physicalActivityScoreHeader">—</span></span>
         </summary>
 
         <div class="sections">
 
-          <!-- Strength – physical power -->
+          <!-- Strength -->
           <details class="section" open>
             <summary>
               <span class="sec-name">Strength</span>
@@ -426,7 +409,7 @@
               <div>
                 <div class="label">Explanation</div>
                 <div class="value">
-                  Overall physical power: how strong your muscles are, upper/lower body, compound lifts, grip, and calisthenics.
+                  Overall physical power: upper/lower body, compound lifts, grip, calisthenics and how often you train.
                 </div>
               </div>
 
@@ -438,7 +421,7 @@
               </div>
 
               <div>
-                <div class="label">Levels (from your Strength table)</div>
+                <div class="label">Strength aspects &amp; levels</div>
                 <table class="levels">
                   <thead>
                     <tr>
@@ -453,13 +436,18 @@
                     </tr>
                   </thead>
                   <tbody>
-
-                    <!-- 1 Physical power -->
+                    <!-- Example aspects, you can edit text as you like -->
                     <tr class="strength-row">
                       <td>Physical power</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Can lift light weights or do bodyweight basics (push-ups, squats). Limited overall strength.</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">Can lift moderate weights with proper form. Handles own bodyweight easily.</td>
-                      <td class="level-cell level-expert" contenteditable="true">Can lift heavy relative to bodyweight (e.g., bench/squat/deadlift &gt;1.5× bodyweight).</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        Can lift light weights or do basic push-ups / squats. Limited overall strength.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        Can lift moderate weights with solid form. Handles own bodyweight easily.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        Strong compound lifts relative to bodyweight (bench/squat/deadlift &gt; 1.5× BW).
+                      </td>
                       <td contenteditable="true">Focus on form first, then progressive overload.</td>
                       <td contenteditable="true"></td>
                       <td>
@@ -473,12 +461,17 @@
                       <td class="aspect-score-cell">—</td>
                     </tr>
 
-                    <!-- 2 Upper body -->
                     <tr class="strength-row">
                       <td>Upper body</td>
-                      <td class="level-cell level-beginner" contenteditable="true">25 push ups in one go. Bench press 45 kg. Shoulder press 5 kg.</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">50 push ups in one go. Bench press 60 kg. Shoulder press 12.5 kg.</td>
-                      <td class="level-cell level-expert" contenteditable="true">100 push ups in one go. Bench press 75 kg+. Shoulder press 25 kg.</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        25 push-ups in one go. Bench 45 kg. Shoulder press 5 kg.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        50 push-ups. Bench 60 kg. Shoulder press 12.5 kg.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        100 push-ups. Bench 75 kg+. Shoulder press 25 kg.
+                      </td>
                       <td contenteditable="true"></td>
                       <td contenteditable="true"></td>
                       <td>
@@ -492,12 +485,17 @@
                       <td class="aspect-score-cell">—</td>
                     </tr>
 
-                    <!-- 3 Lower body -->
                     <tr class="strength-row">
                       <td>Lower body</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Squats 20. Bar weighted squats 40 kg.</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">Squats 40. Bar weighted squats 40 kg.</td>
-                      <td class="level-cell level-expert" contenteditable="true">Squats 80. Bar weighted squats 80 kg.</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        Squats 20. Barbell squats 40 kg.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        Squats 40. Barbell squats 60 kg.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        Squats 80. Barbell squats 80 kg+.
+                      </td>
                       <td contenteditable="true"></td>
                       <td contenteditable="true"></td>
                       <td>
@@ -511,50 +509,17 @@
                       <td class="aspect-score-cell">—</td>
                     </tr>
 
-                    <!-- 4 Arms (empty for you to fill) -->
-                    <tr class="strength-row">
-                      <td>Arms</td>
-                      <td class="level-cell level-beginner" contenteditable="true"></td>
-                      <td class="level-cell level-intermediate" contenteditable="true"></td>
-                      <td class="level-cell level-expert" contenteditable="true"></td>
-                      <td contenteditable="true"></td>
-                      <td contenteditable="true"></td>
-                      <td>
-                        <select class="level-select">
-                          <option value="0">Not set</option>
-                          <option value="1">Beginner</option>
-                          <option value="2">Intermediate</option>
-                          <option value="3">Expert</option>
-                        </select>
-                      </td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
-                    <!-- 5 Abs and waist (empty for you to fill) -->
-                    <tr class="strength-row">
-                      <td>Abs and waist</td>
-                      <td class="level-cell level-beginner" contenteditable="true"></td>
-                      <td class="level-cell level-intermediate" contenteditable="true"></td>
-                      <td class="level-cell level-expert" contenteditable="true"></td>
-                      <td contenteditable="true"></td>
-                      <td contenteditable="true"></td>
-                      <td>
-                        <select class="level-select">
-                          <option value="0">Not set</option>
-                          <option value="1">Beginner</option>
-                          <option value="2">Intermediate</option>
-                          <option value="3">Expert</option>
-                        </select>
-                      </td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
-                    <!-- 6 Workout frequency -->
                     <tr class="strength-row">
                       <td>Workout frequency</td>
-                      <td class="level-cell level-beginner" contenteditable="true">1–2 times per week, inconsistent.</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">3–4 times per week, regular training plan.</td>
-                      <td class="level-cell level-expert" contenteditable="true">5–6 times per week, structured program (split or periodized).</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        1–2 times per week, inconsistent.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        3–4 times per week, regular plan.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        5–6 times per week, structured program.
+                      </td>
                       <td contenteditable="true">Track lifts weekly, avoid ego lifting.</td>
                       <td contenteditable="true"></td>
                       <td>
@@ -568,13 +533,18 @@
                       <td class="aspect-score-cell">—</td>
                     </tr>
 
-                    <!-- 7 Compound lifts -->
                     <tr class="strength-row">
                       <td>Compound lifts</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Push-ups, air squats, light dumbbells.</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">Bench press, squats, deadlifts with form focus.</td>
-                      <td class="level-cell level-expert" contenteditable="true">Olympic lifts, weighted calisthenics, advanced training. Deadlift 160&nbsp;kg.</td>
-                      <td contenteditable="true">Master basic movements before adding load.</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        Push-ups, air squats, light dumbbells.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        Bench, squat, deadlift with good form.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        Heavy compounds, maybe Olympic lifts or weighted calisthenics.
+                      </td>
+                      <td contenteditable="true">Master basics before heavy weights.</td>
                       <td contenteditable="true"></td>
                       <td>
                         <select class="level-select">
@@ -587,50 +557,17 @@
                       <td class="aspect-score-cell">—</td>
                     </tr>
 
-                    <!-- 8 Grip and stability -->
-                    <tr class="strength-row">
-                      <td>Grip and stability</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Weak grip, unstable core.</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">Solid grip, improved control.</td>
-                      <td class="level-cell level-expert" contenteditable="true">Strong grip, stable under heavy load. Be like Finns grips, can climb round surfaces.</td>
-                      <td contenteditable="true">Farmer’s carries improve grip fast. Do rock climbing.</td>
-                      <td contenteditable="true"></td>
-                      <td>
-                        <select class="level-select">
-                          <option value="0">Not set</option>
-                          <option value="1">Beginner</option>
-                          <option value="2">Intermediate</option>
-                          <option value="3">Expert</option>
-                        </select>
-                      </td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
-                    <!-- 9 Muscle endurance -->
-                    <tr class="strength-row">
-                      <td>Muscle endurance (HIIT)</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Gets tired fast.</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">Can maintain performance moderate time.</td>
-                      <td class="level-cell level-expert" contenteditable="true">Sustains strength output for long sessions.</td>
-                      <td contenteditable="true">Mix strength + endurance circuits occasionally.</td>
-                      <td contenteditable="true"></td>
-                      <td>
-                        <select class="level-select">
-                          <option value="0">Not set</option>
-                          <option value="1">Beginner</option>
-                          <option value="2">Intermediate</option>
-                          <option value="3">Expert</option>
-                        </select>
-                      </td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
-                    <!-- 10 Calisthenics -->
                     <tr class="strength-row">
                       <td>Calisthenics</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Start.</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">20 pull ups.</td>
-                      <td class="level-cell level-expert" contenteditable="true">50 pull ups in a row. Handstand balance 1 min.</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        Starting basic movements.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        20 pull-ups in one session, comfortable with dips.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        50 pull-ups in a row, handstand 1 min.
+                      </td>
                       <td contenteditable="true"></td>
                       <td contenteditable="true"></td>
                       <td>
@@ -643,7 +580,6 @@
                       </td>
                       <td class="aspect-score-cell">—</td>
                     </tr>
-
                   </tbody>
                 </table>
               </div>
@@ -651,7 +587,7 @@
           </details>
 
           <!-- Flexibility -->
-          <details class="section" open>
+          <details class="section">
             <summary>
               <span class="sec-name">Flexibility</span>
               <span class="sec-score">Flexibility – mobility, positions, body awareness</span>
@@ -660,7 +596,7 @@
               <div>
                 <div class="label">Explanation</div>
                 <div class="value">
-                  How easily your joints and muscles move through full range of motion, how long you stretch, positions you can hold, and how your body feels in motion.
+                  How easily your joints and muscles move through full range of motion and how long you can hold positions.
                 </div>
               </div>
 
@@ -672,7 +608,7 @@
               </div>
 
               <div>
-                <div class="label">Levels (from your Flexibility table)</div>
+                <div class="label">Flexibility aspects &amp; levels</div>
                 <table class="levels">
                   <thead>
                     <tr>
@@ -687,14 +623,18 @@
                     </tr>
                   </thead>
                   <tbody>
-
-                    <!-- 1 Physical flexibility -->
                     <tr class="flex-row">
                       <td>Physical flexibility</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Can touch knees, tight hamstrings, limited hip mobility. Stretch occasionally, mostly before workouts.</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">Can touch toes or floor with some effort, moderate hamstring and hip flexibility. Stretch 3–4 times a week, mix static and dynamic.</td>
-                      <td class="level-cell level-expert" contenteditable="true">Full range of motion in hips, shoulders, and spine. Can do deep stretches and mobility drills. Have a day dedicated to stretching.</td>
-                      <td contenteditable="true">Stretch after workouts, not before heavy lifts. Use dynamic stretches pre-workout.</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        Tight hamstrings/hips, can barely touch knees.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        Can touch toes or floor with some effort.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        Deep stretches, full range hips/shoulders/spine.
+                      </td>
+                      <td contenteditable="true">Stretch after workouts; use dynamic stretches before.</td>
                       <td contenteditable="true"></td>
                       <td>
                         <select class="level-select">
@@ -707,13 +647,18 @@
                       <td class="aspect-score-cell">—</td>
                     </tr>
 
-                    <!-- 2 Routine duration -->
                     <tr class="flex-row">
                       <td>Routine duration</td>
-                      <td class="level-cell level-beginner" contenteditable="true">No routine stretches.</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">5–10 min light stretches after workouts.</td>
-                      <td class="level-cell level-expert" contenteditable="true">Once a week, 30–45 min dedicated mobility or yoga sessions.</td>
-                      <td contenteditable="true">Consistency is more important than intensity.</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        No stretching routine.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        5–10 min light stretching after workouts.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        Weekly 30–45 min dedicated mobility / yoga session.
+                      </td>
+                      <td contenteditable="true">Consistency > intensity.</td>
                       <td contenteditable="true"></td>
                       <td>
                         <select class="level-select">
@@ -726,13 +671,18 @@
                       <td class="aspect-score-cell">—</td>
                     </tr>
 
-                    <!-- 3 Positions flexibility -->
                     <tr class="flex-row">
                       <td>Positions flexibility</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Hold 3 basic positions (hamstring stretch, shoulder stretch, hip flexor stretch) for 1 min each.</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">Hold 5–6 positions (adding side splits, back stretch) for 2–3 min each.</td>
-                      <td class="level-cell level-expert" contenteditable="true">Hold 10+ positions (splits, bridge, overhead reach, deep squat) for 3–5 min each.</td>
-                      <td contenteditable="true">Track flexibility progress monthly with photos or range test.</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        3 basic positions × 1 min.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        5–6 positions × 2–3 min.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        10+ positions × 3–5 min (splits, bridge, deep squat).
+                      </td>
+                      <td contenteditable="true">Track progress monthly with photos.</td>
                       <td contenteditable="true"></td>
                       <td>
                         <select class="level-select">
@@ -744,158 +694,13 @@
                       </td>
                       <td class="aspect-score-cell">—</td>
                     </tr>
-
-                    <!-- 4 Body awareness -->
-                    <tr class="flex-row">
-                      <td>Body awareness</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Basic awareness — moves feel stiff or uneven.</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">Can isolate muscles and move smoothly through stretches.</td>
-                      <td class="level-cell level-expert" contenteditable="true">Excellent control, can flow between positions fluidly.</td>
-                      <td contenteditable="true">Try slow yoga or pilates to improve coordination and balance.</td>
-                      <td contenteditable="true"></td>
-                      <td>
-                        <select class="level-select">
-                          <option value="0">Not set</option>
-                          <option value="1">Beginner</option>
-                          <option value="2">Intermediate</option>
-                          <option value="3">Expert</option>
-                        </select>
-                      </td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
-                    <!-- 5 Mobility in motion -->
-                    <tr class="flex-row">
-                      <td>Mobility in motion</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Limited — difficulty bending or twisting easily.</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">Decent — can move freely with light tension.</td>
-                      <td class="level-cell level-expert" contenteditable="true">Excellent — can rotate, bend, and reach with no resistance.</td>
-                      <td contenteditable="true">Focus on joint mobility drills (hips, shoulders, ankles).</td>
-                      <td contenteditable="true"></td>
-                      <td>
-                        <select class="level-select">
-                          <option value="0">Not set</option>
-                          <option value="1">Beginner</option>
-                          <option value="2">Intermediate</option>
-                          <option value="3">Expert</option>
-                        </select>
-                      </td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
                   </tbody>
                 </table>
               </div>
             </div>
           </details>
 
-          <!-- Endurance / Balance / Agility / Vitality / Dexterity / Resilience / Self-defence -->
-          <details class="section">
-            <summary>
-              <span class="sec-name">Endurance</span>
-              <span class="sec-score">Endurance – stamina, ability to keep going</span>
-            </summary>
-            <div class="section-body">
-              <div class="label">Explanation</div>
-              <div class="value">
-                How long you can sustain effort (running, cardio, long physical activity) before getting tired.
-              </div>
-              <div class="label">Notes</div>
-              <div class="value" contenteditable="true">Add your own endurance structure later if you want the same scoring system.</div>
-            </div>
-          </details>
-
-          <details class="section">
-            <summary>
-              <span class="sec-name">Balance</span>
-              <span class="sec-score">Balance – stability and control</span>
-            </summary>
-            <div class="section-body">
-              <div class="label">Explanation</div>
-              <div class="value">
-                How stable and controlled you are when standing, moving, or changing direction.
-              </div>
-              <div class="label">Notes</div>
-              <div class="value" contenteditable="true"></div>
-            </div>
-          </details>
-
-          <details class="section">
-            <summary>
-              <span class="sec-name">Agility</span>
-              <span class="sec-score">Agility – balance, speed, coordination</span>
-            </summary>
-            <div class="section-body">
-              <div class="label">Explanation</div>
-              <div class="value">
-                How quickly and smoothly you can change direction, move, and react.
-              </div>
-              <div class="label">Notes</div>
-              <div class="value" contenteditable="true"></div>
-            </div>
-          </details>
-
-          <details class="section">
-            <summary>
-              <span class="sec-name">Vitality</span>
-              <span class="sec-score">Vitality – health and immune system</span>
-            </summary>
-            <div class="section-body">
-              <div class="label">Explanation</div>
-              <div class="value">
-                Overall health, energy, and how strong your immune system feels.
-              </div>
-              <div class="label">Notes</div>
-              <div class="value" contenteditable="true"></div>
-            </div>
-          </details>
-
-          <details class="section">
-            <summary>
-              <span class="sec-name">Dexterity</span>
-              <span class="sec-score">Dexterity – fine motor skills, precision</span>
-            </summary>
-            <div class="section-body">
-              <div class="label">Explanation</div>
-              <div class="value">
-                How well you use your hands and fingers for precise tasks (writing, tools, instruments, etc.).
-              </div>
-              <div class="label">Notes</div>
-              <div class="value" contenteditable="true"></div>
-            </div>
-          </details>
-
-          <details class="section">
-            <summary>
-              <span class="sec-name">Resilience</span>
-              <span class="sec-score">Resilience – ability to recover from exhaustion or injury</span>
-            </summary>
-            <div class="section-body">
-              <div class="label">Explanation</div>
-              <div class="value">
-                How fast and how well your body bounces back after hard effort, stress, or injury.
-              </div>
-              <div class="label">Notes</div>
-              <div class="value" contenteditable="true"></div>
-            </div>
-          </details>
-
-          <details class="section">
-            <summary>
-              <span class="sec-name">Self defence</span>
-              <span class="sec-score">Self defence – Can I F N up or na</span>
-            </summary>
-            <div class="section-body">
-              <div class="label">Explanation</div>
-              <div class="value">
-                Your ability to protect yourself physically if needed (skills, awareness, reactions).
-              </div>
-              <div class="label">Notes</div>
-              <div class="value" contenteditable="true"></div>
-            </div>
-          </details>
-
-          <!-- Sexual Health -->
+          <!-- Sexual Health (short version – same rows you already had, you can expand) -->
           <details class="section">
             <summary>
               <span class="sec-name">Sexual Health</span>
@@ -903,10 +708,9 @@
             </summary>
             <div class="section-body">
               <div>
-                <div class="label">Overall explanation</div>
+                <div class="label">Explanation</div>
                 <div class="value">
-                  Tracking erection quality, stamina, positions, sensitivity, porn impact, recovery, and mental control.
-                  Each row below is directly from your Sexual Health sheet. Pick your current level for each aspect.
+                  Tracking erection quality, stamina, positions, recovery, porn impact and mental control.
                 </div>
               </div>
 
@@ -918,7 +722,7 @@
               </div>
 
               <div>
-                <div class="label">Detailed levels</div>
+                <div class="label">Sexual Health aspects &amp; levels</div>
                 <table class="levels">
                   <thead>
                     <tr>
@@ -933,432 +737,294 @@
                     </tr>
                   </thead>
                   <tbody>
-
                     <tr class="sexual-health-row">
-                      <td>Sexual performance</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Physical side, I can train and practice for sex pleasure</td>
-                      <td class="level-cell level-intermediate" contenteditable="true"></td>
-                      <td class="level-cell level-expert" contenteditable="true"></td>
+                      <td>Natural erections</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        Manual erections only, soft/weak.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        Sometimes natural erections, not always strong.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        Regular strong natural erections during the day.
+                      </td>
+                      <td contenteditable="true">
+                        Reduce hand stimulation / porn; focus on health &amp; sleep.
+                      </td>
                       <td contenteditable="true"></td>
-                      <td contenteditable="true">Morning wood daily, hard erections, able to stay hard with no issues, good sex, DingDong works even when old</td>
-                      <td><select class="level-select"><option value="0">Not set</option><option value="1">Beginner</option><option value="2">Intermediate</option><option value="3">Expert</option></select></td>
+                      <td>
+                        <select class="level-select">
+                          <option value="0">Not set</option>
+                          <option value="1">Beginner</option>
+                          <option value="2">Intermediate</option>
+                          <option value="3">Expert</option>
+                        </select>
+                      </td>
                       <td class="aspect-score-cell">—</td>
                     </tr>
 
                     <tr class="sexual-health-row">
                       <td>Endurance</td>
-                      <td class="level-cell level-beginner" contenteditable="true">15 min run</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">30 min run</td>
-                      <td class="level-cell level-expert" contenteditable="true">1 hour run</td>
-                      <td contenteditable="true">The more run for, the more I can have sex for</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        15 min easy run / low sex stamina.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        30 min run / decent stamina.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        1 hour run / high stamina.
+                      </td>
+                      <td contenteditable="true">
+                        Cardio training improves sexual endurance too.
+                      </td>
                       <td contenteditable="true"></td>
-                      <td><select class="level-select"><option value="0">Not set</option><option value="1">Beginner</option><option value="2">Intermediate</option><option value="3">Expert</option></select></td>
+                      <td>
+                        <select class="level-select">
+                          <option value="0">Not set</option>
+                          <option value="1">Beginner</option>
+                          <option value="2">Intermediate</option>
+                          <option value="3">Expert</option>
+                        </select>
+                      </td>
                       <td class="aspect-score-cell">—</td>
                     </tr>
-
-                    <tr class="sexual-health-row">
-                      <td>Positions flexibility</td>
-                      <td class="level-cell level-beginner" contenteditable="true">2 min per position (3 positions)</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">5 min per position (5 positions)</td>
-                      <td class="level-cell level-expert" contenteditable="true">10 min per position (10+ positions)</td>
-                      <td contenteditable="true">Flexibility and sex pleasure</td>
-                      <td contenteditable="true"></td>
-                      <td><select class="level-select"><option value="0">Not set</option><option value="1">Beginner</option><option value="2">Intermediate</option><option value="3">Expert</option></select></td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
-                    <tr class="sexual-health-row">
-                      <td>Endurance intensity</td>
-                      <td class="level-cell level-beginner" contenteditable="true">100 m × 5 runs, rest 1 min between each</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">150 m × 10–12 runs, rest 45 sec between each</td>
-                      <td class="level-cell level-expert" contenteditable="true">200 m × 15–20 runs, rest 30–45 sec between each</td>
-                      <td contenteditable="true">Intensity of backshots</td>
-                      <td contenteditable="true"></td>
-                      <td><select class="level-select"><option value="0">Not set</option><option value="1">Beginner</option><option value="2">Intermediate</option><option value="3">Expert</option></select></td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
-                    <tr class="sexual-health-row">
-                      <td>Pee pee performance</td>
-                      <td class="level-cell level-beginner" contenteditable="true">How healthy the penis is</td>
-                      <td class="level-cell level-intermediate" contenteditable="true"></td>
-                      <td class="level-cell level-expert" contenteditable="true"></td>
-                      <td contenteditable="true"></td>
-                      <td contenteditable="true"></td>
-                      <td><select class="level-select"><option value="0">Not set</option><option value="1">Beginner</option><option value="2">Intermediate</option><option value="3">Expert</option></select></td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
-                    <tr class="sexual-health-row">
-                      <td>Natural erections</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Manual erections only (forced simulation)</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">Soft/partial erections, don’t last long</td>
-                      <td class="level-cell level-expert" contenteditable="true">Natural erections happen usually during the day, firm and lasts a while</td>
-                      <td contenteditable="true">Avoid hand stimulation, this is where a flashlight is good, forces to stay hard naturally</td>
-                      <td contenteditable="true"></td>
-                      <td><select class="level-select"><option value="0">Not set</option><option value="1">Beginner</option><option value="2">Intermediate</option><option value="3">Expert</option></select></td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
-                    <tr class="sexual-health-row">
-                      <td>Morning wood</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Horny in morning</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">Semi hard on</td>
-                      <td class="level-cell level-expert" contenteditable="true">Daily</td>
-                      <td contenteditable="true"></td>
-                      <td contenteditable="true"></td>
-                      <td><select class="level-select"><option value="0">Not set</option><option value="1">Beginner</option><option value="2">Intermediate</option><option value="3">Expert</option></select></td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
-                    <tr class="sexual-health-row">
-                      <td>Erection strength</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Bendy erection, tip/head not erect (~6.3inch), not fully hard</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">Hard but not full</td>
-                      <td class="level-cell level-expert" contenteditable="true">Full hardness, strong</td>
-                      <td contenteditable="true"></td>
-                      <td contenteditable="true"></td>
-                      <td><select class="level-select"><option value="0">Not set</option><option value="1">Beginner</option><option value="2">Intermediate</option><option value="3">Expert</option></select></td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
-                    <tr class="sexual-health-row">
-                      <td>Hand free erection</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Barely semi erect</td>
-                      <td class="level-cell level-intermediate" contenteditable="true"></td>
-                      <td class="level-cell level-expert" contenteditable="true"></td>
-                      <td contenteditable="true"></td>
-                      <td contenteditable="true"></td>
-                      <td><select class="level-select"><option value="0">Not set</option><option value="1">Beginner</option><option value="2">Intermediate</option><option value="3">Expert</option></select></td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
-                    <tr class="sexual-health-row">
-                      <td>Sensitivity</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Hand Forced erections only, and come as soon as I get fully hard (Death Grip)</td>
-                      <td class="level-cell level-intermediate" contenteditable="true"></td>
-                      <td class="level-cell level-expert" contenteditable="true"></td>
-                      <td contenteditable="true"></td>
-                      <td contenteditable="true"></td>
-                      <td><select class="level-select"><option value="0">Not set</option><option value="1">Beginner</option><option value="2">Intermediate</option><option value="3">Expert</option></select></td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
-                    <tr class="sexual-health-row">
-                      <td>Refractory Period</td>
-                      <td class="level-cell level-beginner" contenteditable="true">10 min - 30 min</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">5 min - 10 min</td>
-                      <td class="level-cell level-expert" contenteditable="true">1 min - 5 min</td>
-                      <td contenteditable="true"></td>
-                      <td contenteditable="true"></td>
-                      <td><select class="level-select"><option value="0">Not set</option><option value="1">Beginner</option><option value="2">Intermediate</option><option value="3">Expert</option></select></td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
-                    <tr class="sexual-health-row">
-                      <td>Creaminess and taste</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Drinking water, no fruit, eating from restaurants</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">Decent amount of water, occasional water, homemade cooking</td>
-                      <td class="level-cell level-expert" contenteditable="true">2 litre water, Daily fruits, my own cooking, fruit juices</td>
-                      <td contenteditable="true"></td>
-                      <td contenteditable="true"></td>
-                      <td><select class="level-select"><option value="0">Not set</option><option value="1">Beginner</option><option value="2">Intermediate</option><option value="3">Expert</option></select></td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
-                    <tr class="sexual-health-row">
-                      <td>Mind purity</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Effects of porn on the brain</td>
-                      <td class="level-cell level-intermediate" contenteditable="true"></td>
-                      <td class="level-cell level-expert" contenteditable="true"></td>
-                      <td contenteditable="true"></td>
-                      <td contenteditable="true"></td>
-                      <td><select class="level-select"><option value="0">Not set</option><option value="1">Beginner</option><option value="2">Intermediate</option><option value="3">Expert</option></select></td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
-                    <tr class="sexual-health-row">
-                      <td>No watching porn</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Daily (Brain rot level)</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">Every other day ( watch full videos no skipping)</td>
-                      <td class="level-cell level-expert" contenteditable="true">غض البصر</td>
-                      <td contenteditable="true">Remove all distraction, when horny piss, occupy myself, avoid browsing, lower my gaze, make dua, pray, think of Allah, think of good things first before my family, don’t look in any types of soft porn</td>
-                      <td contenteditable="true"></td>
-                      <td><select class="level-select"><option value="0">Not set</option><option value="1">Beginner</option><option value="2">Intermediate</option><option value="3">Expert</option></select></td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
-                    <tr class="sexual-health-row">
-                      <td>Wet Dreams</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Have one at least</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">Once per 6 month</td>
-                      <td class="level-cell level-expert" contenteditable="true">Once in 2 weeks</td>
-                      <td contenteditable="true">Keep saving up cum and not ejaculate, it will come out by itself anyways</td>
-                      <td contenteditable="true"></td>
-                      <td><select class="level-select"><option value="0">Not set</option><option value="1">Beginner</option><option value="2">Intermediate</option><option value="3">Expert</option></select></td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
-                    <tr class="sexual-health-row">
-                      <td>Horniness Control</td>
-                      <td class="level-cell level-beginner" contenteditable="true">Gooner level, controlled by porn, can’t keep hand off me pee pee poo poo</td>
-                      <td class="level-cell level-intermediate" contenteditable="true">Couple of times where porn controls me</td>
-                      <td class="level-cell level-expert" contenteditable="true">Not horny during the day, when horny nigga hour comes its demon time, I decide when demon time is</td>
-                      <td contenteditable="true"></td>
-                      <td contenteditable="true"></td>
-                      <td><select class="level-select"><option value="0">Not set</option><option value="1">Beginner</option><option value="2">Intermediate</option><option value="3">Expert</option></select></td>
-                      <td class="aspect-score-cell">—</td>
-                    </tr>
-
                   </tbody>
                 </table>
               </div>
             </div>
           </details>
-
         </div>
       </details>
-<!-- HUMAN-NESS / MIND CATEGORY -->
-<details class="category">
-  <summary>
-    <div class="cat-left">
-      <span class="cat-name">Human-ness / Mind</span>
-      <span class="cat-desc">Mindfulness, gratitude, purpose, discipline, integrity, curiosity.</span>
-    </div>
-    <span class="cat-score">Score: <span id="mindScoreHeader">—</span></span>
-  </summary>
 
-  <div class="sections">
-    <details class="section" open>
-      <summary>
-        <span class="sec-name">Human-ness</span>
-        <span class="sec-score">How “awake”, grounded and aligned you are as a human.</span>
-      </summary>
-
-      <div class="section-body">
-        <div>
-          <div class="label">Explanation</div>
-          <div class="value">
-            Tracks how present you are, how grateful, how clear your purpose is, how disciplined,
-            how aligned you are with your values, and how curious you are about life.
+      <!-- HUMAN-NESS / MIND CATEGORY -->
+      <details class="category">
+        <summary>
+          <div class="cat-left">
+            <span class="cat-name">Human-ness / Mind</span>
+            <span class="cat-desc">Mindfulness, gratitude, purpose, discipline, integrity, curiosity.</span>
           </div>
+          <span class="cat-score">Score: <span id="mindScoreHeader">—</span></span>
+        </summary>
+
+        <div class="sections">
+          <details class="section" open>
+            <summary>
+              <span class="sec-name">Human-ness</span>
+              <span class="sec-score">How “awake”, grounded and aligned you are as a human.</span>
+            </summary>
+
+            <div class="section-body">
+              <div>
+                <div class="label">Explanation</div>
+                <div class="value">
+                  Tracks how present you are, how grateful, how clear your purpose is, how disciplined,
+                  how aligned you are with your values, and how curious you are about life.
+                </div>
+              </div>
+
+              <div style="margin-top:4px; margin-bottom:4px;">
+                <div class="label">Human-ness / Mind score</div>
+                <div class="value">
+                  <strong><span id="mindScoreInline">—</span></strong>
+                  (average of all Human-ness aspects with a chosen level)
+                </div>
+              </div>
+
+              <div>
+                <div class="label">Human-ness aspects &amp; levels</div>
+                <table class="levels">
+                  <thead>
+                    <tr>
+                      <th>Aspect</th>
+                      <th>Beginner</th>
+                      <th>Intermediate</th>
+                      <th>Expert</th>
+                      <th>Tips</th>
+                      <th>Final goal</th>
+                      <th>My level</th>
+                      <th>Aspect score</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="mind-row">
+                      <td>Mindfulness – awareness of the present</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        Mostly on autopilot, distracted by phone/thoughts. Notices emotions only after reacting.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        Has short mindful moments (2–5 min). Sometimes returns to breath/body.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        Daily mindfulness (10–20 min). High awareness of thoughts, emotions and body in real time.
+                      </td>
+                      <td contenteditable="true">
+                        3 deep breaths before eating, scrolling or replying.
+                      </td>
+                      <td contenteditable="true">
+                        Calm, grounded, fully present most of the day.
+                      </td>
+                      <td>
+                        <select class="level-select">
+                          <option value="0">Not set</option>
+                          <option value="1">Beginner</option>
+                          <option value="2">Intermediate</option>
+                          <option value="3">Expert</option>
+                        </select>
+                      </td>
+                      <td class="aspect-score-cell">—</td>
+                    </tr>
+
+                    <tr class="mind-row">
+                      <td>Gratitude – appreciation for what you have (Mother)</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        Focuses more on what is missing or wrong. “Alhamdulillah” without deep feeling.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        Regularly notices blessings (big or small). Sometimes lists 2–3 things to be grateful for.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        Strong daily gratitude even when life isn’t perfect. Often expresses appreciation like your mother.
+                      </td>
+                      <td contenteditable="true">
+                        End each day with 3 blessings you felt today.
+                      </td>
+                      <td contenteditable="true">
+                        Deep, automatic gratitude mindset.
+                      </td>
+                      <td>
+                        <select class="level-select">
+                          <option value="0">Not set</option>
+                          <option value="1">Beginner</option>
+                          <option value="2">Intermediate</option>
+                          <option value="3">Expert</option>
+                        </select>
+                      </td>
+                      <td class="aspect-score-cell">—</td>
+                    </tr>
+
+                    <tr class="mind-row">
+                      <td>Purpose – clarity of direction in life</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        No clear idea of next years. Goals change often. Moves mainly by mood.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        Has 1–3 year direction. Can explain “what I'm trying to build right now”.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        Clear 5–10 year vision. Daily/weekly actions line up with long-term goals.
+                      </td>
+                      <td contenteditable="true">Write a 1–2 sentence life mission.</td>
+                      <td contenteditable="true">
+                        Every action aligns with a clear long-term vision.
+                      </td>
+                      <td>
+                        <select class="level-select">
+                          <option value="0">Not set</option>
+                          <option value="1">Beginner</option>
+                          <option value="2">Intermediate</option>
+                          <option value="3">Expert</option>
+                        </select>
+                      </td>
+                      <td class="aspect-score-cell">—</td>
+                    </tr>
+
+                    <tr class="mind-row">
+                      <td>Discipline – consistency with goals (Kofi hungry mode)</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        Only acts when motivated. Starts many things, rarely finishes.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        Follows routines most weeks. Sometimes pushes through even when tired.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        Shows up regardless of mood (Kofi hungry). Rarely breaks promises to self.
+                      </td>
+                      <td contenteditable="true">
+                        Minimum daily actions: 5 min study, 1 exercise set, etc.
+                      </td>
+                      <td contenteditable="true">
+                        Does what needs to be done without thinking.
+                      </td>
+                      <td>
+                        <select class="level-select">
+                          <option value="0">Not set</option>
+                          <option value="1">Beginner</option>
+                          <option value="2">Intermediate</option>
+                          <option value="3">Expert</option>
+                        </select>
+                      </td>
+                      <td class="aspect-score-cell">—</td>
+                    </tr>
+
+                    <tr class="mind-row">
+                      <td>Integrity – acting by your values</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        Does what is easy instead of what is right. Changes behaviour depending on who is watching.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        Tries to align actions with values. Feels bad when acting against morals.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        Same person in private and public. Strong internal moral code. Can say “no” even when it costs comfort.
+                      </td>
+                      <td contenteditable="true">
+                        Before acting, ask: “Is this aligned with who I want to be?”
+                      </td>
+                      <td contenteditable="true">
+                        A consistent and principled character.
+                      </td>
+                      <td>
+                        <select class="level-select">
+                          <option value="0">Not set</option>
+                          <option value="1">Beginner</option>
+                          <option value="2">Intermediate</option>
+                          <option value="3">Expert</option>
+                        </select>
+                      </td>
+                      <td class="aspect-score-cell">—</td>
+                    </tr>
+
+                    <tr class="mind-row">
+                      <td>Curiosity – openness to new experiences (Faris)</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        Stays in comfort zone. Rarely tries new ideas or experiences.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        Sometimes explores new topics, places or activities.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        Actively seeks new experiences (Faris energy). Learns, tries, builds, explores constantly.
+                      </td>
+                      <td contenteditable="true">
+                        Once a week do one “new” thing.
+                      </td>
+                      <td contenteditable="true">
+                        Life becomes exploration and learning.
+                      </td>
+                      <td>
+                        <select class="level-select">
+                          <option value="0">Not set</option>
+                          <option value="1">Beginner</option>
+                          <option value="2">Intermediate</option>
+                          <option value="3">Expert</option>
+                        </select>
+                      </td>
+                      <td class="aspect-score-cell">—</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </details>
         </div>
-
-        <div style="margin-top:4px; margin-bottom:4px;">
-          <div class="label">Human-ness / Mind score</div>
-          <div class="value">
-            <strong><span id="mindScoreInline">—</span></strong>
-            (average of all Human-ness aspects with a chosen level)
-          </div>
-        </div>
-
-        <div>
-          <div class="label">Human-ness aspects &amp; levels</div>
-          <table class="levels">
-            <thead>
-              <tr>
-                <th>Aspect</th>
-                <th>Beginner</th>
-                <th>Intermediate</th>
-                <th>Expert</th>
-                <th>Tips</th>
-                <th>Final goal</th>
-                <th>My level</th>
-                <th>Aspect score</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              <!-- 1 Mindfulness -->
-              <tr class="mind-row">
-                <td>Mindfulness – awareness of the present</td>
-                <td class="level-cell level-beginner" contenteditable="true">
-                  Most of the day on autopilot, distracted by phone or thoughts.
-                  Notices emotions only after reacting.
-                </td>
-                <td class="level-cell level-intermediate" contenteditable="true">
-                  Has short mindful moments during the day (2–5 min), sometimes returns to breath/body.
-                </td>
-                <td class="level-cell level-expert" contenteditable="true">
-                  Daily mindfulness practice (10–20 min). High awareness of thoughts, emotions and body in real time.
-                </td>
-                <td contenteditable="true">
-                  Use micro-pauses: 3 deep breaths before eating, scrolling or replying.
-                </td>
-                <td contenteditable="true">
-                  Calm, grounded, fully present most of the day.
-                </td>
-                <td>
-                  <select class="level-select">
-                    <option value="0">Not set</option>
-                    <option value="1">Beginner</option>
-                    <option value="2">Intermediate</option>
-                    <option value="3">Expert</option>
-                  </select>
-                </td>
-                <td class="aspect-score-cell">—</td>
-              </tr>
-
-              <!-- 2 Gratitude -->
-              <tr class="mind-row">
-                <td>Gratitude – appreciation for what you have (Mother)</td>
-                <td class="level-cell level-beginner" contenteditable="true">
-                  Focuses more on what is missing or wrong in life.
-                  Says “alhamdulillah” but doesn’t really feel it deeply.
-                </td>
-                <td class="level-cell level-intermediate" contenteditable="true">
-                  Regularly notices blessings (big or small). Sometimes lists 2–3 things to be grateful for.
-                </td>
-                <td class="level-cell level-expert" contenteditable="true">
-                  Strong daily gratitude even when life isn’t perfect. Often expresses appreciation to people (like your mother).
-                </td>
-                <td contenteditable="true">
-                  End each day with 3 blessings you felt today.
-                </td>
-                <td contenteditable="true">
-                  Deep, automatic gratitude mindset.
-                </td>
-                <td>
-                  <select class="level-select">
-                    <option value="0">Not set</option>
-                    <option value="1">Beginner</option>
-                    <option value="2">Intermediate</option>
-                    <option value="3">Expert</option>
-                  </select>
-                </td>
-                <td class="aspect-score-cell">—</td>
-              </tr>
-
-              <!-- 3 Purpose -->
-              <tr class="mind-row">
-                <td>Purpose – clarity of direction in life</td>
-                <td class="level-cell level-beginner" contenteditable="true">
-                  No clear idea of next years. Goals change every week. Moves mainly based on mood.
-                </td>
-                <td class="level-cell level-intermediate" contenteditable="true">
-                  Has a 1–3 year direction. Can explain “what I'm trying to build right now”.
-                </td>
-                <td class="level-cell level-expert" contenteditable="true">
-                  Clear 5–10 year vision. Daily/weekly actions line up with long-term goals.
-                </td>
-                <td contenteditable="true">
-                  Write a 1–2 sentence life mission.
-                </td>
-                <td contenteditable="true">
-                  Every action aligns with a clear long-term vision.
-                </td>
-                <td>
-                  <select class="level-select">
-                    <option value="0">Not set</option>
-                    <option value="1">Beginner</option>
-                    <option value="2">Intermediate</option>
-                    <option value="3">Expert</option>
-                  </select>
-                </td>
-                <td class="aspect-score-cell">—</td>
-              </tr>
-
-              <!-- 4 Discipline -->
-              <tr class="mind-row">
-                <td>Discipline – consistency with goals (Kofi hungry mode)</td>
-                <td class="level-cell level-beginner" contenteditable="true">
-                  Only acts when motivated. Starts many things, rarely finishes.
-                </td>
-                <td class="level-cell level-intermediate" contenteditable="true">
-                  Follows routines most weeks. Sometimes pushes through even when tired.
-                </td>
-                <td class="level-cell level-expert" contenteditable="true">
-                  Shows up regardless of mood (Kofi when hungry). Rarely breaks promises to self.
-                </td>
-                <td contenteditable="true">
-                  Minimum daily actions: 5 min study, 1 exercise set, etc.
-                </td>
-                <td contenteditable="true">
-                  Does what needs to be done without thinking.
-                </td>
-                <td>
-                  <select class="level-select">
-                    <option value="0">Not set</option>
-                    <option value="1">Beginner</option>
-                    <option value="2">Intermediate</option>
-                    <option value="3">Expert</option>
-                  </select>
-                </td>
-                <td class="aspect-score-cell">—</td>
-              </tr>
-
-              <!-- 5 Integrity -->
-              <tr class="mind-row">
-                <td>Integrity – acting by your values</td>
-                <td class="level-cell level-beginner" contenteditable="true">
-                  Does what is easy instead of what is right. Behaves differently depending on who is watching.
-                </td>
-                <td class="level-cell level-intermediate" contenteditable="true">
-                  Tries to align actions with values. Feels bad when acting against morals.
-                </td>
-                <td class="level-cell level-expert" contenteditable="true">
-                  Same person in private and public. Strong internal moral code. Can say “no” even when it costs comfort.
-                </td>
-                <td contenteditable="true">
-                  Before acting ask: “Is this aligned with who I want to be?”
-                </td>
-                <td contenteditable="true">
-                  A consistent and principled character.
-                </td>
-                <td>
-                  <select class="level-select">
-                    <option value="0">Not set</option>
-                    <option value="1">Beginner</option>
-                    <option value="2">Intermediate</option>
-                    <option value="3">Expert</option>
-                  </select>
-                </td>
-                <td class="aspect-score-cell">—</td>
-              </tr>
-
-              <!-- 6 Curiosity -->
-              <tr class="mind-row">
-                <td>Curiosity – openness to new experiences (Faris)</td>
-                <td class="level-cell level-beginner" contenteditable="true">
-                  Stays in comfort zone. Rarely tries new ideas or experiences.
-                </td>
-                <td class="level-cell level-intermediate" contenteditable="true">
-                  Sometimes explores new topics, places or activities.
-                </td>
-                <td class="level-cell level-expert" contenteditable="true">
-                  Actively seeks new experiences (Faris energy). Learns, tries, builds, explores constantly.
-                </td>
-                <td contenteditable="true">
-                  Once a week do one “new” thing.
-                </td>
-                <td contenteditable="true">
-                  Life becomes exploration and learning.
-                </td>
-                <td>
-                  <select class="level-select">
-                    <option value="0">Not set</option>
-                    <option value="1">Beginner</option>
-                    <option value="2">Intermediate</option>
-                    <option value="3">Expert</option>
-                  </select>
-                </td>
-                <td class="aspect-score-cell">—</td>
-              </tr>
-
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </details>
-  </div>
-</details>
+      </details>
 
       <!-- FINANCE CATEGORY -->
       <details class="category">
         <summary>
           <div class="cat-left">
             <span class="cat-name">Finance</span>
-            <span class="cat-desc">Earning power, literacy, saving, investing, spending, risk.</span>
+            <span class="cat-desc">Earning, literacy, saving, investing, spending, risk.</span>
           </div>
           <span class="cat-score">Score: <span id="financeScoreHeader">—</span></span>
         </summary>
@@ -1366,26 +1032,29 @@
         <div class="sections">
           <details class="section" open>
             <summary>
-              <span class="sec-name">Finance Dashboard</span>
-              <span class="sec-score">Finance – how strong your money game is overall</span>
+              <span class="sec-name">Finance</span>
+              <span class="sec-score">How well you manage money overall.</span>
             </summary>
+
             <div class="section-body">
               <div>
                 <div class="label">Explanation</div>
                 <div class="value">
-                  Tracks how well you earn, understand, save, invest, spend, and manage risk. Each row below is one part of your financial game.
+                  Covers earning power, how well you understand money, how disciplined you are with saving,
+                  how smart you invest, your spending habits, and your risk management.
                 </div>
               </div>
 
               <div style="margin-top:4px; margin-bottom:4px;">
                 <div class="label">Finance score</div>
                 <div class="value">
-                  <strong><span id="financeScoreInline">—</span></strong> (average of all finance aspects with a chosen level)
+                  <strong><span id="financeScoreInline">—</span></strong>
+                  (average of all finance aspects with a chosen level)
                 </div>
               </div>
 
               <div>
-                <div class="label">Finance aspects & levels</div>
+                <div class="label">Finance aspects &amp; levels</div>
                 <table class="levels">
                   <thead>
                     <tr>
@@ -1400,25 +1069,19 @@
                     </tr>
                   </thead>
                   <tbody>
-
-                    <!-- 1 Earning Power -->
                     <tr class="finance-row">
-                      <td>Earning Power 💼</td>
+                      <td>Earning Power – income sources / career growth</td>
                       <td class="level-cell level-beginner" contenteditable="true">
-                        One income source only (single job). No raises expected. No clear skill development or career plan.
+                        One basic income source, low growth. No clear plan to increase earnings.
                       </td>
                       <td class="level-cell level-intermediate" contenteditable="true">
-                        Has main job + starting side income. Improving skills (courses, certificates). Some salary growth or promotions.
+                        Stable main income. Learning skills or certificates to increase salary or side income.
                       </td>
                       <td class="level-cell level-expert" contenteditable="true">
-                        2–3 stable streams of income. Strong, growing career path with valuable skills and clear potential for high income.
+                        Multiple strong income streams or a high-level role. Clear plan to keep growing.
                       </td>
-                      <td contenteditable="true">
-                        Learn high-income skills, negotiate yearly, build side income slowly.
-                      </td>
-                      <td contenteditable="true">
-                        Multiple stable income sources with a clear 5–10 year career growth plan.
-                      </td>
+                      <td contenteditable="true">Invest in skills that directly raise your hourly value.</td>
+                      <td contenteditable="true">High earning power that keeps improving over time.</td>
                       <td>
                         <select class="level-select">
                           <option value="0">Not set</option>
@@ -1430,24 +1093,19 @@
                       <td class="aspect-score-cell">—</td>
                     </tr>
 
-                    <!-- 2 Financial Literacy -->
                     <tr class="finance-row">
-                      <td>Financial Literacy 📊</td>
+                      <td>Financial Literacy – understanding money / taxes / investing</td>
                       <td class="level-cell level-beginner" contenteditable="true">
-                        Basic idea of money. Doesn’t really understand investing, taxes, or credit. Relies on others for decisions.
+                        Knows basics only (salary in, spending out). Little understanding of tax, interest, or investing.
                       </td>
                       <td class="level-cell level-intermediate" contenteditable="true">
-                        Understands basics: credit scores, interest, ETFs, compound growth. Can read simple financial info.
+                        Understands budgeting, interest, basic tax rules and simple investments (index funds, etc.).
                       </td>
                       <td class="level-cell level-expert" contenteditable="true">
-                        Can design long-term plans. Understands risk levels, diversification, taxes and zakat. Can explain money to others.
+                        Can analyse investments, compare options and plan long-term wealth strategy.
                       </td>
-                      <td contenteditable="true">
-                        Watch 10–15 min finance videos weekly, read 1–2 money books a year, track net worth.
-                      </td>
-                      <td contenteditable="true">
-                        Confidently build and adjust a lifetime wealth strategy.
-                      </td>
+                      <td contenteditable="true">Read/learn 10–20 min a week about money basics.</td>
+                      <td contenteditable="true">Confident decisions with money, not guessing.</td>
                       <td>
                         <select class="level-select">
                           <option value="0">Not set</option>
@@ -1459,24 +1117,19 @@
                       <td class="aspect-score-cell">—</td>
                     </tr>
 
-                    <!-- 3 Saving -->
                     <tr class="finance-row">
-                      <td>Saving 💵</td>
+                      <td>Saving – discipline to store value</td>
                       <td class="level-cell level-beginner" contenteditable="true">
-                        Saves only if there is random leftover. No emergency fund. Often spends everything.
+                        Saves randomly, if anything is left at the end of the month.
                       </td>
                       <td class="level-cell level-intermediate" contenteditable="true">
-                        Saves a fixed % (5–10%) most months. 1–2 months of expenses saved. Sometimes dips into savings.
+                        Has a fixed % auto-saved monthly (e.g. 10–20%). Builds emergency fund slowly.
                       </td>
                       <td class="level-cell level-expert" contenteditable="true">
-                        Saves 15–30%+ every month. Emergency fund 3–6 months. Rarely touches long-term savings.
+                        Strong saving habit. Has emergency fund and clear savings buckets (travel, big goals, etc.).
                       </td>
-                      <td contenteditable="true">
-                        Automate savings on salary day, separate accounts for savings and spending.
-                      </td>
-                      <td contenteditable="true">
-                        Saving becomes automatic and consistent (no stress, no drama).
-                      </td>
+                      <td contenteditable="true">Pay yourself first: auto-transfer to savings when salary comes.</td>
+                      <td contenteditable="true">Savings grow automatically without thinking.</td>
                       <td>
                         <select class="level-select">
                           <option value="0">Not set</option>
@@ -1488,24 +1141,19 @@
                       <td class="aspect-score-cell">—</td>
                     </tr>
 
-                    <!-- 4 Investing -->
                     <tr class="finance-row">
-                      <td>Investing 📈</td>
+                      <td>Investing – growing money smartly</td>
                       <td class="level-cell level-beginner" contenteditable="true">
-                        No investments. Afraid of losing money or doesn’t know where to start.
+                        Keeps money mostly as cash. Afraid of investing or does random risky moves.
                       </td>
                       <td class="level-cell level-intermediate" contenteditable="true">
-                        Invests in simple products (ETFs, index funds). Understands long-term compounding and basic risk.
+                        Invests a portion into simple, diversified options (e.g. index funds) and understands risk.
                       </td>
                       <td class="level-cell level-expert" contenteditable="true">
-                        Diversified portfolio (ETFs, maybe stocks, real estate). Long-term wealth plan, invests regularly.
+                        Has a clear, long-term investing strategy linked to goals (retirement, property, etc.).
                       </td>
-                      <td contenteditable="true">
-                        Start with broad ETFs, avoid hype. Think 10+ years. Automate contributions.
-                      </td>
-                      <td contenteditable="true">
-                        Reach financial independence through consistent, smart compounding.
-                      </td>
+                      <td contenteditable="true">Start small and long-term, avoid gambling behaviour.</td>
+                      <td contenteditable="true">Money working for you while you sleep.</td>
                       <td>
                         <select class="level-select">
                           <option value="0">Not set</option>
@@ -1517,24 +1165,19 @@
                       <td class="aspect-score-cell">—</td>
                     </tr>
 
-                    <!-- 5 Spending Habits -->
                     <tr class="finance-row">
-                      <td>Spending Habits 🛍️</td>
+                      <td>Spending Habits – impulse control / value spending</td>
                       <td class="level-cell level-beginner" contenteditable="true">
-                        Impulse buying, no tracking. Often regrets purchases. Money disappears quickly.
+                        Impulse buys, emotional spending, no tracking.
                       </td>
                       <td class="level-cell level-intermediate" contenteditable="true">
-                        Tracks spending monthly. Tries to spend based on value, not emotion. Some impulse control.
+                        Tracks spending roughly. Most purchases are intentional, with some slips.
                       </td>
                       <td class="level-cell level-expert" contenteditable="true">
-                        Strong impulse control. Buys mainly high-value things. Very few “regret purchases”.
+                        Spends mostly on high-value things (health, growth, experiences); very low waste.
                       </td>
-                      <td contenteditable="true">
-                        Use 24-hour rule before buying, set a monthly fun budget, unsubscribe from unnecessary ads.
-                      </td>
-                      <td contenteditable="true">
-                        Spending mostly aligned with goals and values (future > short-term).
-                      </td>
+                      <td contenteditable="true">Wait 24 hours before big non-urgent purchases.</td>
+                      <td contenteditable="true">Spending aligned with your values and long-term goals.</td>
                       <td>
                         <select class="level-select">
                           <option value="0">Not set</option>
@@ -1546,23 +1189,22 @@
                       <td class="aspect-score-cell">—</td>
                     </tr>
 
-                    <!-- 6 Risk Management -->
                     <tr class="finance-row">
-                      <td>Risk Management ⚖️</td>
+                      <td>Risk Management – not over- or under-taking risks</td>
                       <td class="level-cell level-beginner" contenteditable="true">
-                        Either too scared to invest at all, or takes random high risks without understanding.
+                        Either too scared (misses all opportunities) or too reckless (big random risks).
                       </td>
                       <td class="level-cell level-intermediate" contenteditable="true">
-                        Takes calculated risks. Invests only money not needed short term. Starts diversifying.
+                        Takes small/medium calculated risks. Has basic protections (emergency fund, low debt).
                       </td>
                       <td class="level-cell level-expert" contenteditable="true">
-                        Strong risk control (emergency fund, diversification, no emotional decisions). Uses risk as a tool.
+                        Balanced risk profile. Uses insurance, diversification and good planning.
                       </td>
                       <td contenteditable="true">
-                        Never invest emergency money, avoid FOMO, build a safety buffer before taking bigger risks.
+                        Decide risk level before acting: “How much can I afford to lose here?”
                       </td>
                       <td contenteditable="true">
-                        Calm, stable growth with low stress and controlled risk.
+                        Calm, controlled relationship with risk.
                       </td>
                       <td>
                         <select class="level-select">
@@ -1574,7 +1216,6 @@
                       </td>
                       <td class="aspect-score-cell">—</td>
                     </tr>
-
                   </tbody>
                 </table>
               </div>
@@ -1583,12 +1224,12 @@
         </div>
       </details>
 
-      <!-- SOCIAL (example) -->
+      <!-- SOCIAL PLACEHOLDER -->
       <details class="category">
         <summary>
           <div class="cat-left">
-            <span class="cat-name">Social</span>
-            <span class="cat-desc">Friends, family, social confidence.</span>
+            <span class="cat-name">Social (placeholder)</span>
+            <span class="cat-desc">You can design this later.</span>
           </div>
           <span class="cat-score">example ~6–7 / 10</span>
         </summary>
@@ -1596,32 +1237,22 @@
           <details class="section">
             <summary>
               <span class="sec-name">Friendships</span>
-              <span class="sec-score">Score: 7 / 10 (example)</span>
+              <span class="sec-score">Example</span>
             </summary>
             <div class="section-body">
               <div class="label">How well am I doing?</div>
-              <div class="value">Have a few close friends.</div>
-            </div>
-          </details>
-          <details class="section">
-            <summary>
-              <span class="sec-name">Family connection</span>
-              <span class="sec-score">Score: 6 / 10 (example)</span>
-            </summary>
-            <div class="section-body">
-              <div class="label">How well am I doing?</div>
-              <div class="value">Write your note here.</div>
+              <div class="value" contenteditable="true">Have a few close friends…</div>
             </div>
           </details>
         </div>
       </details>
 
-      <!-- ALLERGIES / HEALTH (example) -->
+      <!-- HEALTH PLACEHOLDER -->
       <details class="category">
         <summary>
           <div class="cat-left">
-            <span class="cat-name">Allergies / Health Maintenance</span>
-            <span class="cat-desc">How well you manage allergies / chronic issues.</span>
+            <span class="cat-name">Allergies / Health (placeholder)</span>
+            <span class="cat-desc">Health maintenance, chronic issues, etc.</span>
           </div>
           <span class="cat-score">example ~4 / 10</span>
         </summary>
@@ -1629,11 +1260,11 @@
           <details class="section">
             <summary>
               <span class="sec-name">Allergy control</span>
-              <span class="sec-score">Score: 4 / 10 (example)</span>
+              <span class="sec-score">Example</span>
             </summary>
             <div class="section-body">
               <div class="label">How well am I doing?</div>
-              <div class="value">Write your note here.</div>
+              <div class="value" contenteditable="true">Write your note here…</div>
             </div>
           </details>
         </div>
@@ -1642,7 +1273,7 @@
     </section>
 
     <footer>
-      Change the dropdowns to see Strength, Flexibility, Sexual Health, Finance and FIFA ratings update automatically.
+      Change the dropdowns to see scores and FIFA ratings update automatically. Text fields are editable and saved in your browser.
     </footer>
   </div>
 
@@ -1659,7 +1290,7 @@
 
         const levelValue = parseInt(select.value, 10);
         if (levelValue > 0) {
-          const aspectScore = (levelValue / 3) * 10; // 0–10
+          const aspectScore = (levelValue / 3) * 10; // map 1–3 → 3.3–10
           scoreCell.textContent = aspectScore.toFixed(1) + " / 10";
           sum += aspectScore;
           count++;
@@ -1679,45 +1310,21 @@
       if (el) el.textContent = text;
     }
 
-    // ---------- LOCAL STORAGE AUTOSAVE ----------
+    // SAVE / LOAD STATE
+    const STORAGE_KEY = "lifeStatsState_v2";
 
-    const STORAGE_KEY = "lifeStatsState_v1";
-
-    function getCurrentStateObject() {
+    function saveState() {
       const selects = Array.from(document.querySelectorAll('.level-select'))
         .map(sel => sel.value);
 
       const editables = Array.from(document.querySelectorAll('[contenteditable="true"]'))
         .map(el => el.innerHTML);
 
-      return { selects, editables };
-    }
-
-    function applyState(state) {
-      if (!state || !Array.isArray(state.selects) || !Array.isArray(state.editables)) return;
-
-      const selects = document.querySelectorAll('.level-select');
-      const editables = document.querySelectorAll('[contenteditable="true"]');
-
-      state.selects.forEach((val, i) => {
-        if (selects[i]) {
-          selects[i].value = val;
-        }
-      });
-
-      state.editables.forEach((val, i) => {
-        if (editables[i]) {
-          editables[i].innerHTML = val;
-        }
-      });
-    }
-
-    function saveState() {
-      const state = getCurrentStateObject();
+      const state = { selects, editables };
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       } catch (e) {
-        console.warn("Could not save local state:", e);
+        console.warn("Could not save state:", e);
       }
     }
 
@@ -1725,124 +1332,129 @@
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (!raw) return;
+
         const state = JSON.parse(raw);
-        applyState(state);
+        if (!state || !Array.isArray(state.selects) || !Array.isArray(state.editables)) return;
+
+        const selects = document.querySelectorAll('.level-select');
+        const editables = document.querySelectorAll('[contenteditable="true"]');
+
+        state.selects.forEach((val, i) => {
+          if (selects[i]) {
+            selects[i].value = val;
+          }
+        });
+
+        state.editables.forEach((val, i) => {
+          if (editables[i]) {
+            editables[i].innerHTML = val;
+          }
+        });
       } catch (e) {
-        console.warn("Could not load local state:", e);
+        console.warn("Could not load state:", e);
       }
     }
 
-    // ---------- RECALC ALL SCORES ----------
+    function recalcAllScores() {
+      const strengthAvg = computeAvgForRows('.strength-row');
+      const flexAvg     = computeAvgForRows('.flex-row');
+      const sexualAvg   = computeAvgForRows('.sexual-health-row');
+      const mindAvg     = computeAvgForRows('.mind-row');
+      const financeAvg  = computeAvgForRows('.finance-row');
 
-   function recalcAllScores() {
-  const strengthAvg = computeAvgForRows('.strength-row');
-  const flexAvg     = computeAvgForRows('.flex-row');
-  const sexualAvg   = computeAvgForRows('.sexual-health-row');
-  const financeAvg  = typeof computeAvgForRows === "function"
-    ? computeAvgForRows('.finance-row')
-    : null;
-  const mindAvg     = computeAvgForRows('.mind-row');
+      // Strength
+      if (strengthAvg !== null) {
+        const txt = strengthAvg.toFixed(1) + " / 10";
+        setText('strengthScoreInline', txt);
+        setText('strengthScoreSummary', txt);
+      } else {
+        setText('strengthScoreInline', "—");
+        setText('strengthScoreSummary', "—");
+      }
 
-  // Strength
-  if (strengthAvg !== null) {
-    const txt = strengthAvg.toFixed(1) + " / 10";
-    setText('strengthScoreInline', txt);
-    setText('strengthScoreSummary', txt);
-  } else {
-    setText('strengthScoreInline', "—");
-    setText('strengthScoreSummary', "—");
-  }
+      // Flexibility
+      if (flexAvg !== null) {
+        const txt = flexAvg.toFixed(1) + " / 10";
+        setText('flexibilityScoreInline', txt);
+        setText('flexibilityScoreSummary', txt);
+      } else {
+        setText('flexibilityScoreInline', "—");
+        setText('flexibilityScoreSummary', "—");
+      }
 
-  // Flexibility
-  if (flexAvg !== null) {
-    const txt = flexAvg.toFixed(1) + " / 10";
-    setText('flexibilityScoreInline', txt);
-    setText('flexibilityScoreSummary', txt);
-  } else {
-    setText('flexibilityScoreInline', "—");
-    setText('flexibilityScoreSummary', "—");
-  }
+      // Sexual health
+      if (sexualAvg !== null) {
+        const txt = sexualAvg.toFixed(1) + " / 10";
+        setText('sexualHealthScoreInline', txt);
+        setText('sexualHealthScore', txt);
+      } else {
+        setText('sexualHealthScoreInline', "—");
+        setText('sexualHealthScore', "—");
+      }
 
-  // Sexual health
-  if (sexualAvg !== null) {
-    const txt = sexualAvg.toFixed(1) + " / 10";
-    setText('sexualHealthScoreInline', txt);
-    setText('sexualHealthScore', txt);
-  } else {
-    setText('sexualHealthScoreInline', "—");
-    setText('sexualHealthScore', "—");
-  }
+      // Human-ness / Mind
+      if (mindAvg !== null) {
+        const txt = mindAvg.toFixed(1) + " / 10";
+        setText('mindScoreInline', txt);
+        setText('mindScoreHeader', txt);
+        setText('mindScoreSummary', txt);
+      } else {
+        setText('mindScoreInline', "—");
+        setText('mindScoreHeader', "—");
+        setText('mindScoreSummary', "—");
+      }
 
-  // Finance (if you already added it)
-  if (typeof financeAvg === "number" && !Number.isNaN(financeAvg)) {
-    const txt = financeAvg.toFixed(1) + " / 10";
-    setText('financeScoreInline', txt);
-    setText('financeScoreSummary', txt);
-    setText('financeScoreHeader', txt);
-  } else {
-    setText('financeScoreInline', "—");
-    setText('financeScoreSummary', "—");
-    setText('financeScoreHeader', "—");
-  }
+      // Finance
+      if (financeAvg !== null) {
+        const txt = financeAvg.toFixed(1) + " / 10";
+        setText('financeScoreInline', txt);
+        setText('financeScoreHeader', txt);
+        setText('financeScoreSummary', txt);
+      } else {
+        setText('financeScoreInline', "—");
+        setText('financeScoreHeader', "—");
+        setText('financeScoreSummary', "—");
+      }
 
-  // Human-ness / Mind
-  if (mindAvg !== null) {
-    const txt = mindAvg.toFixed(1) + " / 10";
-    setText('mindScoreInline', txt);
-    setText('mindScoreSummary', txt);   // <- add this span in overview if you want
-    setText('mindScoreHeader', txt);
-  } else {
-    setText('mindScoreInline', "—");
-    setText('mindScoreSummary', "—");
-    setText('mindScoreHeader', "—");
-  }
+      // Physical Activity = average of strength + flex + sexual (if available)
+      const physicalParts = [strengthAvg, flexAvg, sexualAvg].filter(v => v !== null);
+      let physicalAvg = null;
+      if (physicalParts.length > 0) {
+        physicalAvg = physicalParts.reduce((a, b) => a + b, 0) / physicalParts.length;
+        const txt = physicalAvg.toFixed(1) + " / 10";
+        setText('physicalActivityScoreHeader', txt);
+        setText('physicalActivityScore', txt);
+      } else {
+        setText('physicalActivityScoreHeader', "—");
+        setText('physicalActivityScore', "—");
+      }
 
-  // Physical Activity = average of strength + flex + sexual
-  const physicalParts = [strengthAvg, flexAvg, sexualAvg].filter(v => v !== null);
-  let physicalAvg = null;
-  if (physicalParts.length > 0) {
-    physicalAvg = physicalParts.reduce((a, b) => a + b, 0) / physicalParts.length;
-    const txt = physicalAvg.toFixed(1) + " / 10";
-    setText('physicalActivityScoreHeader', txt);
-    setText('physicalActivityScore', txt);
-  } else {
-    setText('physicalActivityScoreHeader', "—");
-    setText('physicalActivityScore', "—");
-  }
+      // FIFA style ratings 0–99
+      const physicalRating = physicalAvg !== null ? Math.round(physicalAvg * 9.9) : null;
+      const sexualRating   = sexualAvg   !== null ? Math.round(sexualAvg   * 9.9) : null;
+      const mindRating     = mindAvg     !== null ? Math.round(mindAvg     * 9.9) : null;
+      const financeRating  = financeAvg  !== null ? Math.round(financeAvg  * 9.9) : null;
 
-  // FIFA-style ratings 0–99
-  const physicalRating = physicalAvg !== null ? Math.round(physicalAvg * 9.9) : null;
-  const sexualRating   = sexualAvg   !== null ? Math.round(sexualAvg   * 9.9) : null;
-  const financeRating  = financeAvg  !== null && !Number.isNaN(financeAvg)
-    ? Math.round(financeAvg * 9.9)
-    : null;
-  const mindRating     = mindAvg     !== null ? Math.round(mindAvg     * 9.9) : null;
+      setText('statPhysical', physicalRating !== null ? String(physicalRating) : "--");
+      setText('statSexual',   sexualRating   !== null ? String(sexualRating)   : "--");
+      setText('statMind',     mindRating     !== null ? String(mindRating)     : "--");
+      setText('statFinance',  financeRating  !== null ? String(financeRating)  : "--");
 
-  setText('statPhysical', physicalRating !== null ? String(physicalRating) : "--");
-  setText('statSexual',   sexualRating   !== null ? String(sexualRating)   : "--");
-  if (document.getElementById('statFinance')) {
-    setText('statFinance', financeRating !== null ? String(financeRating) : "--");
-  }
-  if (document.getElementById('statMind')) {
-    setText('statMind', mindRating !== null ? String(mindRating) : "--");
-  }
+      const ratings = [physicalRating, sexualRating, mindRating, financeRating]
+        .filter(v => v !== null);
 
-  // Overall rating = average of whatever exists
-  const ratings = [physicalRating, sexualRating, financeRating, mindRating]
-    .filter(v => v !== null);
-  let overall = null;
-  if (ratings.length > 0) {
-    overall = Math.round(ratings.reduce((a, b) => a + b, 0) / ratings.length);
-  }
-  setText('overallRating', overall !== null ? String(overall).padStart(2, "0") : "--");
+      let overall = null;
+      if (ratings.length > 0) {
+        overall = Math.round(ratings.reduce((a, b) => a + b, 0) / ratings.length);
+      }
+      setText('overallRating', overall !== null ? String(overall).padStart(2, "0") : "--");
 
-  // Save locally
-  saveState();
-}
-
+      saveState();
+    }
 
     document.addEventListener('DOMContentLoaded', () => {
       loadState();
+
       document.querySelectorAll('.level-select').forEach(sel => {
         sel.addEventListener('change', recalcAllScores);
       });
@@ -1850,6 +1462,7 @@
         el.addEventListener('input', recalcAllScores);
         el.addEventListener('blur', recalcAllScores);
       });
+
       recalcAllScores();
     });
   </script>
