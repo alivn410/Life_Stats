@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Life Stats – Physical Activity & Sexual Health</title>
+  <title>Life Stats – Physical Activity, Sexual Health & Finance</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
@@ -215,7 +215,6 @@
       cursor: text;
     }
 
-    /* Level coloring + scores */
     .level-cell {
       padding: 4px 6px;
     }
@@ -313,7 +312,7 @@
   <div class="app">
     <header>
       <h1>Life Stats</h1>
-      <small>FIFA-style overall card + detailed Physical Activity stats.</small>
+      <small>FIFA-style overall card + detailed Physical, Sexual and Finance stats.</small>
     </header>
 
     <!-- TOP SUMMARY: FIFA card + side card -->
@@ -341,7 +340,7 @@
               <span class="fifa-stat-label">SEX</span>
             </div>
             <div>
-              <span class="fifa-stat-value">--</span>
+              <span class="fifa-stat-value" id="statFinance">--</span>
               <span class="fifa-stat-label">FIN</span>
             </div>
             <div>
@@ -363,7 +362,7 @@
 
       <div class="card">
         <h2>Quick Overview</h2>
-        <p>Scores now use <strong>Strength</strong>, <strong>Flexibility</strong>, and <strong>Sexual Health</strong> to build your Physical Activity FIFA rating.</p>
+        <p>Scores now use <strong>Strength</strong>, <strong>Flexibility</strong>, <strong>Sexual Health</strong> and <strong>Finance</strong> to build your FIFA-style rating.</p>
         <div class="summary-list">
           <div class="summary-item">
             <span>Physical Activity</span>
@@ -380,6 +379,10 @@
           <div class="summary-item">
             <span>Sexual Health</span>
             <span class="summary-score"><span id="sexualHealthScore">—</span></span>
+          </div>
+          <div class="summary-item">
+            <span>Finance</span>
+            <span class="summary-score"><span id="financeScoreSummary">—</span></span>
           </div>
           <div class="summary-item">
             <span>Social (placeholder)</span>
@@ -642,7 +645,7 @@
             </div>
           </details>
 
-          <!-- Flexibility – with full table -->
+          <!-- Flexibility -->
           <details class="section" open>
             <summary>
               <span class="sec-name">Flexibility</span>
@@ -782,8 +785,6 @@
           </details>
 
           <!-- Endurance / Balance / Agility / Vitality / Dexterity / Resilience / Self-defence -->
-          <!-- (kept simple, editable blocks without scoring yet – you can expand later) -->
-
           <details class="section">
             <summary>
               <span class="sec-name">Endurance</span>
@@ -889,7 +890,7 @@
             </div>
           </details>
 
-          <!-- Sexual Health (already done before, kept same) -->
+          <!-- Sexual Health -->
           <details class="section">
             <summary>
               <span class="sec-name">Sexual Health</span>
@@ -927,7 +928,6 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- (same Sexual Health rows as before, unchanged) -->
 
                     <tr class="sexual-health-row">
                       <td>Sexual performance</td>
@@ -1114,7 +1114,237 @@
         </div>
       </details>
 
-      <!-- SOCIAL (example, unchanged) -->
+      <!-- FINANCE CATEGORY -->
+      <details class="category">
+        <summary>
+          <div class="cat-left">
+            <span class="cat-name">Finance</span>
+            <span class="cat-desc">Earning power, literacy, saving, investing, spending, risk.</span>
+          </div>
+          <span class="cat-score">Score: <span id="financeScoreHeader">—</span></span>
+        </summary>
+
+        <div class="sections">
+          <details class="section" open>
+            <summary>
+              <span class="sec-name">Finance Dashboard</span>
+              <span class="sec-score">Finance – how strong your money game is overall</span>
+            </summary>
+            <div class="section-body">
+              <div>
+                <div class="label">Explanation</div>
+                <div class="value">
+                  Tracks how well you earn, understand, save, invest, spend, and manage risk. Each row below is one part of your financial game.
+                </div>
+              </div>
+
+              <div style="margin-top:4px; margin-bottom:4px;">
+                <div class="label">Finance score</div>
+                <div class="value">
+                  <strong><span id="financeScoreInline">—</span></strong> (average of all finance aspects with a chosen level)
+                </div>
+              </div>
+
+              <div>
+                <div class="label">Finance aspects & levels</div>
+                <table class="levels">
+                  <thead>
+                    <tr>
+                      <th>Aspect</th>
+                      <th>Beginner</th>
+                      <th>Intermediate</th>
+                      <th>Expert</th>
+                      <th>Tips</th>
+                      <th>Final goal</th>
+                      <th>My level</th>
+                      <th>Aspect score</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <!-- 1 Earning Power -->
+                    <tr class="finance-row">
+                      <td>Earning Power 💼</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        One income source only (single job). No raises expected. No clear skill development or career plan.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        Has main job + starting side income. Improving skills (courses, certificates). Some salary growth or promotions.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        2–3 stable streams of income. Strong, growing career path with valuable skills and clear potential for high income.
+                      </td>
+                      <td contenteditable="true">
+                        Learn high-income skills, negotiate yearly, build side income slowly.
+                      </td>
+                      <td contenteditable="true">
+                        Multiple stable income sources with a clear 5–10 year career growth plan.
+                      </td>
+                      <td>
+                        <select class="level-select">
+                          <option value="0">Not set</option>
+                          <option value="1">Beginner</option>
+                          <option value="2">Intermediate</option>
+                          <option value="3">Expert</option>
+                        </select>
+                      </td>
+                      <td class="aspect-score-cell">—</td>
+                    </tr>
+
+                    <!-- 2 Financial Literacy -->
+                    <tr class="finance-row">
+                      <td>Financial Literacy 📊</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        Basic idea of money. Doesn’t really understand investing, taxes, or credit. Relies on others for decisions.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        Understands basics: credit scores, interest, ETFs, compound growth. Can read simple financial info.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        Can design long-term plans. Understands risk levels, diversification, taxes and zakat. Can explain money to others.
+                      </td>
+                      <td contenteditable="true">
+                        Watch 10–15 min finance videos weekly, read 1–2 money books a year, track net worth.
+                      </td>
+                      <td contenteditable="true">
+                        Confidently build and adjust a lifetime wealth strategy.
+                      </td>
+                      <td>
+                        <select class="level-select">
+                          <option value="0">Not set</option>
+                          <option value="1">Beginner</option>
+                          <option value="2">Intermediate</option>
+                          <option value="3">Expert</option>
+                        </select>
+                      </td>
+                      <td class="aspect-score-cell">—</td>
+                    </tr>
+
+                    <!-- 3 Saving -->
+                    <tr class="finance-row">
+                      <td>Saving 💵</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        Saves only if there is random leftover. No emergency fund. Often spends everything.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        Saves a fixed % (5–10%) most months. 1–2 months of expenses saved. Sometimes dips into savings.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        Saves 15–30%+ every month. Emergency fund 3–6 months. Rarely touches long-term savings.
+                      </td>
+                      <td contenteditable="true">
+                        Automate savings on salary day, separate accounts for savings and spending.
+                      </td>
+                      <td contenteditable="true">
+                        Saving becomes automatic and consistent (no stress, no drama).
+                      </td>
+                      <td>
+                        <select class="level-select">
+                          <option value="0">Not set</option>
+                          <option value="1">Beginner</option>
+                          <option value="2">Intermediate</option>
+                          <option value="3">Expert</option>
+                        </select>
+                      </td>
+                      <td class="aspect-score-cell">—</td>
+                    </tr>
+
+                    <!-- 4 Investing -->
+                    <tr class="finance-row">
+                      <td>Investing 📈</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        No investments. Afraid of losing money or doesn’t know where to start.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        Invests in simple products (ETFs, index funds). Understands long-term compounding and basic risk.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        Diversified portfolio (ETFs, maybe stocks, real estate). Long-term wealth plan, invests regularly.
+                      </td>
+                      <td contenteditable="true">
+                        Start with broad ETFs, avoid hype. Think 10+ years. Automate contributions.
+                      </td>
+                      <td contenteditable="true">
+                        Reach financial independence through consistent, smart compounding.
+                      </td>
+                      <td>
+                        <select class="level-select">
+                          <option value="0">Not set</option>
+                          <option value="1">Beginner</option>
+                          <option value="2">Intermediate</option>
+                          <option value="3">Expert</option>
+                        </select>
+                      </td>
+                      <td class="aspect-score-cell">—</td>
+                    </tr>
+
+                    <!-- 5 Spending Habits -->
+                    <tr class="finance-row">
+                      <td>Spending Habits 🛍️</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        Impulse buying, no tracking. Often regrets purchases. Money disappears quickly.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        Tracks spending monthly. Tries to spend based on value, not emotion. Some impulse control.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        Strong impulse control. Buys mainly high-value things. Very few “regret purchases”.
+                      </td>
+                      <td contenteditable="true">
+                        Use 24-hour rule before buying, set a monthly fun budget, unsubscribe from unnecessary ads.
+                      </td>
+                      <td contenteditable="true">
+                        Spending mostly aligned with goals and values (future > short-term).
+                      </td>
+                      <td>
+                        <select class="level-select">
+                          <option value="0">Not set</option>
+                          <option value="1">Beginner</option>
+                          <option value="2">Intermediate</option>
+                          <option value="3">Expert</option>
+                        </select>
+                      </td>
+                      <td class="aspect-score-cell">—</td>
+                    </tr>
+
+                    <!-- 6 Risk Management -->
+                    <tr class="finance-row">
+                      <td>Risk Management ⚖️</td>
+                      <td class="level-cell level-beginner" contenteditable="true">
+                        Either too scared to invest at all, or takes random high risks without understanding.
+                      </td>
+                      <td class="level-cell level-intermediate" contenteditable="true">
+                        Takes calculated risks. Invests only money not needed short term. Starts diversifying.
+                      </td>
+                      <td class="level-cell level-expert" contenteditable="true">
+                        Strong risk control (emergency fund, diversification, no emotional decisions). Uses risk as a tool.
+                      </td>
+                      <td contenteditable="true">
+                        Never invest emergency money, avoid FOMO, build a safety buffer before taking bigger risks.
+                      </td>
+                      <td contenteditable="true">
+                        Calm, stable growth with low stress and controlled risk.
+                      </td>
+                      <td>
+                        <select class="level-select">
+                          <option value="0">Not set</option>
+                          <option value="1">Beginner</option>
+                          <option value="2">Intermediate</option>
+                          <option value="3">Expert</option>
+                        </select>
+                      </td>
+                      <td class="aspect-score-cell">—</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <!-- SOCIAL (example) -->
       <details class="category">
         <summary>
           <div class="cat-left">
@@ -1173,11 +1403,11 @@
     </section>
 
     <footer>
-      Change the dropdowns to see Strength, Flexibility, Sexual Health and FIFA ratings update automatically.
+      Change the dropdowns to see Strength, Flexibility, Sexual Health, Finance and FIFA ratings update automatically.
     </footer>
   </div>
 
-    <script>
+  <script>
     function computeAvgForRows(rowSelector) {
       const rows = document.querySelectorAll(rowSelector);
       let sum = 0;
@@ -1210,22 +1440,45 @@
       if (el) el.textContent = text;
     }
 
-    // ---------- SAVE / LOAD STATE ----------
+    // ---------- LOCAL STORAGE AUTOSAVE ----------
 
     const STORAGE_KEY = "lifeStatsState_v1";
 
-    function saveState() {
+    function getCurrentStateObject() {
       const selects = Array.from(document.querySelectorAll('.level-select'))
         .map(sel => sel.value);
 
       const editables = Array.from(document.querySelectorAll('[contenteditable="true"]'))
         .map(el => el.innerHTML);
 
-      const state = { selects, editables };
+      return { selects, editables };
+    }
+
+    function applyState(state) {
+      if (!state || !Array.isArray(state.selects) || !Array.isArray(state.editables)) return;
+
+      const selects = document.querySelectorAll('.level-select');
+      const editables = document.querySelectorAll('[contenteditable="true"]');
+
+      state.selects.forEach((val, i) => {
+        if (selects[i]) {
+          selects[i].value = val;
+        }
+      });
+
+      state.editables.forEach((val, i) => {
+        if (editables[i]) {
+          editables[i].innerHTML = val;
+        }
+      });
+    }
+
+    function saveState() {
+      const state = getCurrentStateObject();
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       } catch (e) {
-        console.warn("Could not save state:", e);
+        console.warn("Could not save local state:", e);
       }
     }
 
@@ -1233,26 +1486,10 @@
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (!raw) return;
-
         const state = JSON.parse(raw);
-        if (!state || !Array.isArray(state.selects) || !Array.isArray(state.editables)) return;
-
-        const selects = document.querySelectorAll('.level-select');
-        const editables = document.querySelectorAll('[contenteditable="true"]');
-
-        state.selects.forEach((val, i) => {
-          if (selects[i]) {
-            selects[i].value = val;
-          }
-        });
-
-        state.editables.forEach((val, i) => {
-          if (editables[i]) {
-            editables[i].innerHTML = val;
-          }
-        });
+        applyState(state);
       } catch (e) {
-        console.warn("Could not load state:", e);
+        console.warn("Could not load local state:", e);
       }
     }
 
@@ -1262,6 +1499,7 @@
       const strengthAvg = computeAvgForRows('.strength-row');
       const flexAvg     = computeAvgForRows('.flex-row');
       const sexualAvg   = computeAvgForRows('.sexual-health-row');
+      const financeAvg  = computeAvgForRows('.finance-row');
 
       // Strength
       if (strengthAvg !== null) {
@@ -1293,11 +1531,23 @@
         setText('sexualHealthScore', "—");
       }
 
-      // Physical Activity = average of the available components
-      const parts = [strengthAvg, flexAvg, sexualAvg].filter(v => v !== null);
+      // Finance
+      if (financeAvg !== null) {
+        const txt = financeAvg.toFixed(1) + " / 10";
+        setText('financeScoreInline', txt);
+        setText('financeScoreSummary', txt);
+        setText('financeScoreHeader', txt);
+      } else {
+        setText('financeScoreInline', "—");
+        setText('financeScoreSummary', "—");
+        setText('financeScoreHeader', "—");
+      }
+
+      // Physical Activity = average of strength + flex + sexual
+      const physicalParts = [strengthAvg, flexAvg, sexualAvg].filter(v => v !== null);
       let physicalAvg = null;
-      if (parts.length > 0) {
-        physicalAvg = parts.reduce((a, b) => a + b, 0) / parts.length;
+      if (physicalParts.length > 0) {
+        physicalAvg = physicalParts.reduce((a, b) => a + b, 0) / physicalParts.length;
         const txt = physicalAvg.toFixed(1) + " / 10";
         setText('physicalActivityScoreHeader', txt);
         setText('physicalActivityScore', txt);
@@ -1306,40 +1556,37 @@
         setText('physicalActivityScore', "—");
       }
 
-      // FIFA style ratings
+      // FIFA style ratings (0–99 style)
       const physicalRating = physicalAvg !== null ? Math.round(physicalAvg * 9.9) : null;
       const sexualRating   = sexualAvg   !== null ? Math.round(sexualAvg   * 9.9) : null;
-
-      let overall = null;
-      if (physicalRating !== null && sexualRating !== null) {
-        overall = Math.round((physicalRating + sexualRating) / 2);
-      } else if (physicalRating !== null) {
-        overall = physicalRating;
-      } else if (sexualRating !== null) {
-        overall = sexualRating;
-      }
+      const financeRating  = financeAvg  !== null ? Math.round(financeAvg  * 9.9) : null;
 
       setText('statPhysical', physicalRating !== null ? String(physicalRating) : "--");
       setText('statSexual',   sexualRating   !== null ? String(sexualRating)   : "--");
+      setText('statFinance',  financeRating  !== null ? String(financeRating)  : "--");
+
+      // Overall = average of whatever exists out of PHY / SEX / FIN
+      const ratings = [physicalRating, sexualRating, financeRating].filter(v => v !== null);
+      let overall = null;
+      if (ratings.length > 0) {
+        overall = Math.round(ratings.reduce((a, b) => a + b, 0) / ratings.length);
+      }
+
       setText('overallRating', overall !== null ? String(overall).padStart(2, "0") : "--");
 
-      // after recalculating, save
+      // save locally every recalc
       saveState();
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      // 1) Load whatever was stored
       loadState();
-      // 2) Hook events
       document.querySelectorAll('.level-select').forEach(sel => {
         sel.addEventListener('change', recalcAllScores);
       });
       document.querySelectorAll('[contenteditable="true"]').forEach(el => {
-        // on input or blur, recalc + save
         el.addEventListener('input', recalcAllScores);
         el.addEventListener('blur', recalcAllScores);
       });
-      // 3) Initial calculation
       recalcAllScores();
     });
   </script>
